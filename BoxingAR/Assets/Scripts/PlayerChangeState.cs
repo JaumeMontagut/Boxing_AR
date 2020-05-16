@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class PlayerChangeState : StateMachineBehaviour
 {
-    PlayerManager player;
+    private Entity entity;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if(player == null)
+        if(entity == null)
         {
-            player = animator.gameObject.GetComponentInParent<PlayerManager>();
+            entity = animator.gameObject.GetComponent<Entity>();
         }
-        player.player_state = PlayerManager.PLAYER_STATES.IDLE;
-
+        entity.entityState = Entity.ENTITY_STATE.IDLE;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

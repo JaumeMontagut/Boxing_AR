@@ -11,43 +11,17 @@ public class PlayerManager : Entity
         anim = GetComponentInChildren<Animator>();
     }
 
-    void Update()
-    {
-        Debug.Log(player_state);
-        //switch (player_state)
-        //{
-        //    case PLAYER_STATES.IDLE:
-        //        {
-        //        }
-        //        break;
-        //    case PLAYER_STATES.LEFT_HIT:
-        //        {
-        //        }
-        //        break;
-        //    case PLAYER_STATES.RIGHT_HIT:
-        //        {
-        //        }
-        //        break;
-        //    case PLAYER_STATES.LEFT_DODGE:
-        //        {
-        //        }
-        //        break;
-        //    case PLAYER_STATES.RIGHT_DODGE:
-        //        {
-        //        }
-        //        break;
-        //    default:
-        //        {
-        //        }
-        //        break;
-        //}
-    }
+    //void Update()
+    //{
+    //    Debug.Log(entityState);
+    //}
+
     public void RequestRightPunch()
     {
-        if (player_state == PLAYER_STATES.IDLE)
+        if (entityState == ENTITY_STATE.IDLE)
         {
-            player_state = PLAYER_STATES.RIGHT_HIT;
-            anim.SetTrigger("RightHit");
+            entityState = ENTITY_STATE.PUNCH_ANTICIPATION;
+            anim.SetTrigger("RightPunch");
         }
         else
         {
@@ -57,10 +31,10 @@ public class PlayerManager : Entity
 
     public void RequestLeftPunch()
     {
-        if (player_state == PLAYER_STATES.IDLE)
+        if (entityState == ENTITY_STATE.IDLE)
         {
-            player_state = PLAYER_STATES.LEFT_HIT;
-            anim.SetTrigger("LeftHit");
+            entityState = ENTITY_STATE.PUNCH_ANTICIPATION;
+            anim.SetTrigger("LeftPunch");
         }
         else
         {
@@ -71,9 +45,9 @@ public class PlayerManager : Entity
 
     public void RequestRightDodge()
     {
-        if (player_state == PLAYER_STATES.IDLE)
+        if (entityState == ENTITY_STATE.IDLE)
         {
-            player_state = PLAYER_STATES.RIGHT_DODGE;
+            entityState = ENTITY_STATE.DODGE_ANTICIPATION;
             anim.SetTrigger("RightDodge");
         }
         else
@@ -84,9 +58,9 @@ public class PlayerManager : Entity
 
     public void RequestLeftDodge()
     {
-        if (player_state == PLAYER_STATES.IDLE)
+        if (entityState == ENTITY_STATE.IDLE)
         {
-            player_state = PLAYER_STATES.RIGHT_DODGE;
+            entityState = ENTITY_STATE.DODGE_ANTICIPATION;
             anim.SetTrigger("LeftDodge");
         }
         else
@@ -95,15 +69,27 @@ public class PlayerManager : Entity
         }
     }
 
-    //TODO: Check in which state the other player is
-    public void LeftPunchAnimationEvent()
+    public void LeftPunchEvent()
     {
+        entityState = ENTITY_STATE.PUNCH;
+    }
 
+    public void RightPunchEvent()
+    {
+        entityState = ENTITY_STATE.PUNCH;
+    }
+
+    public void LeftPunchRecoveryEvent()
+    {
+        entityState = ENTITY_STATE.PUNCH_RECOVERY;
+        opponent.hitByLastAttack = false;
+    }
+
+    public void RightPunchRecoveryEvent()
+    {
+        entityState = ENTITY_STATE.PUNCH_RECOVERY;
+        opponent.hitByLastAttack = false;
     }
 
 
-    public void RightPunchAnimationEvent()
-    {
-
-    }
 }

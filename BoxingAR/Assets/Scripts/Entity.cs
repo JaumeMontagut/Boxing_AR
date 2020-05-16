@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
-    public enum PLAYER_STATES
+    public enum ENTITY_STATE
     {
         IDLE,
-        RIGHT_HIT,
-        LEFT_HIT,
-        LEFT_DODGE,
-        RIGHT_DODGE,
+        PUNCH_ANTICIPATION,
+        PUNCH,
+        PUNCH_RECOVERY,
         DODGE_ANTICIPATION,
         DODGE,
         DODGE_RECOVERY,
@@ -20,27 +19,59 @@ public class Entity : MonoBehaviour
     {
         LEFT,
         MIDDLE,
-        RIGHT
+        RIGHT,
+        INVALID
     };
 
-    [HideInInspector] public PLAYER_STATES player_state = PLAYER_STATES.IDLE;
-    [HideInInspector] public DIRECTION player_pos = DIRECTION.MIDDLE;
-    [HideInInspector] public float life;
-    
-    private GameSystem gameManager;
+    [HideInInspector] public ENTITY_STATE entityState = ENTITY_STATE.IDLE;
+    protected DIRECTION entityPos = DIRECTION.MIDDLE;
+    protected DIRECTION punchDir = DIRECTION.INVALID;
 
-    public void Start()
+    public Entity opponent;
+
+    protected static float maxLife = 120;
+    protected float currLife = maxLife;
+
+    protected float punchDamage = 15;
+    [HideInInspector] public bool hitByLastAttack = false;
+
+    protected GameSystem gameManager;
+
+    private void Start()
     {
         gameManager = FindObjectOfType<GameSystem>();
     }
 
+    private void Update()
+    {
+        switch (entityState)
+        {
+            case ENTITY_STATE.PUNCH:
+                {
+                    //We check every every frame that's on the punch state (it's like a collider that stays every few frames)
+                    opponent.CheckHit(punchDir, punchDamage);
+                }
+                break;
+            default:
+                {
+                }
+                break;
+        }
+    }
+
     public void CheckHit(DIRECTION punchDir, float damage)
     {
+        if(hitByLastAttack)
+        {
+            return;
+        }
+
         if (punchDir == DIRECTION.LEFT)
         {
-            if (player_pos == DIRECTION.LEFT || player_pos == DIRECTION.MIDDLE)
+            if (entityPos == DIRECTION.LEFT || entityPos == DIRECTION.MIDDLE)
             {
-                life -= damage;
+                currLife -= damage;
+                hitByLastAttack = true;
                 if (IsDead())
                 {
                     gameManager.GameOver();
@@ -50,9 +81,10 @@ public class Entity : MonoBehaviour
         }
         else if (punchDir == DIRECTION.RIGHT)
         {
-            if (player_pos == DIRECTION.RIGHT || player_pos == DIRECTION.MIDDLE)
+            if (entityPos == DIRECTION.RIGHT || entityPos == DIRECTION.MIDDLE)
             {
-                life -= damage;
+                currLife -= damage;
+                hitByLastAttack = true;
                 if (IsDead())
                 {
                     gameManager.GameOver();
@@ -64,6 +96,6 @@ public class Entity : MonoBehaviour
 
     public bool IsDead()
     {
-        return life <= 0;
+        return maxLife <= 0;
     }
 }
