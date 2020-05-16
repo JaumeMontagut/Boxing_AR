@@ -573,7 +573,7 @@ PrefabInstance:
     - target: {fileID: 3805074018174403362, guid: dc869206e8adfa448b4f1759b0b71a3e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.0473
       objectReference: {fileID: 0}
     - target: {fileID: 3805074018174403362, guid: dc869206e8adfa448b4f1759b0b71a3e,
         type: 3}
@@ -583,7 +583,7 @@ PrefabInstance:
     - target: {fileID: 3805074018174403362, guid: dc869206e8adfa448b4f1759b0b71a3e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3805074018174403362, guid: dc869206e8adfa448b4f1759b0b71a3e,
         type: 3}
@@ -593,7 +593,7 @@ PrefabInstance:
     - target: {fileID: 3805074018174403362, guid: dc869206e8adfa448b4f1759b0b71a3e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 3805074018174403362, guid: dc869206e8adfa448b4f1759b0b71a3e,
         type: 3}
@@ -603,7 +603,7 @@ PrefabInstance:
     - target: {fileID: 3805074018174403362, guid: dc869206e8adfa448b4f1759b0b71a3e,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 3805074018174403362, guid: dc869206e8adfa448b4f1759b0b71a3e,
         type: 3}
@@ -618,7 +618,7 @@ PrefabInstance:
     - target: {fileID: 3805074018174403362, guid: dc869206e8adfa448b4f1759b0b71a3e,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 3805074018174403362, guid: dc869206e8adfa448b4f1759b0b71a3e,
         type: 3}
@@ -796,7 +796,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 548736289}
-        m_MethodName: RightPunch
+        m_MethodName: RequestRightPunch
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1132,7 +1132,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 548736289}
-        m_MethodName: LeftPunch
+        m_MethodName: RequestLeftPunch
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1442,7 +1442,7 @@ PrefabInstance:
     - target: {fileID: 3805074018174403362, guid: dc869206e8adfa448b4f1759b0b71a3e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 3805074018174403362, guid: dc869206e8adfa448b4f1759b0b71a3e,
         type: 3}
@@ -1452,7 +1452,7 @@ PrefabInstance:
     - target: {fileID: 3805074018174403362, guid: dc869206e8adfa448b4f1759b0b71a3e,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 3805074018174403362, guid: dc869206e8adfa448b4f1759b0b71a3e,
         type: 3}
@@ -1467,7 +1467,7 @@ PrefabInstance:
     - target: {fileID: 3805074018174403362, guid: dc869206e8adfa448b4f1759b0b71a3e,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 3805074018174403362, guid: dc869206e8adfa448b4f1759b0b71a3e,
         type: 3}
