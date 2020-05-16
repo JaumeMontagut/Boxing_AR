@@ -24,6 +24,12 @@ public class MenuManager : MonoBehaviour
         credits.SetActive(true);
     }
 
+    public void GoToMainMenu()
+    {
+        credits.SetActive(false);
+        mainmenu.SetActive(true);
+    }
+
     public void Github(string url)
     {
         Application.OpenURL(url);
