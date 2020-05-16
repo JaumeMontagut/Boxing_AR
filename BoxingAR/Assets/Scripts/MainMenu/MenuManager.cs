@@ -5,17 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public GameObject mainmenu;
+    public GameObject credits;
 
     public void LoadScene()
     {
@@ -25,5 +16,16 @@ public class MenuManager : MonoBehaviour
     public void Exit()
     {
         Application.Quit();
+    }
+
+    public void GoToCredits()
+    {
+        mainmenu.SetActive(false);
+        credits.SetActive(true);
+    }
+
+    public void Github(string url)
+    {
+        Application.OpenURL(url);
     }
 }
