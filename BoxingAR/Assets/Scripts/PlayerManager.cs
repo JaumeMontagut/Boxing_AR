@@ -2,16 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerManager : MonoBehaviour
+public class PlayerManager : Entity
 {
-   public enum PLAYER_STATES   
-    {
-        IDLE, 
-        RIGHT_HIT,
-        LEFT_HIT,
-    };
-    
-    [HideInInspector] public PLAYER_STATES player_state = PLAYER_STATES.IDLE;
     private Animator anim;
 
     void Start()
@@ -22,29 +14,33 @@ public class PlayerManager : MonoBehaviour
     void Update()
     {
         Debug.Log(player_state);
-        switch (player_state)
-        {
-            case PLAYER_STATES.IDLE:
-                {
-
-                }
-                break;
-            case PLAYER_STATES.LEFT_HIT:
-                {
-
-                }
-                break;
-            case PLAYER_STATES.RIGHT_HIT:
-                {
-
-                }
-                break;
-            default:
-                {
-                    Debug.LogWarning("Player shouldn't enter here. There's a case that's not been coded.");
-                }
-                break;
-        }
+        //switch (player_state)
+        //{
+        //    case PLAYER_STATES.IDLE:
+        //        {
+        //        }
+        //        break;
+        //    case PLAYER_STATES.LEFT_HIT:
+        //        {
+        //        }
+        //        break;
+        //    case PLAYER_STATES.RIGHT_HIT:
+        //        {
+        //        }
+        //        break;
+        //    case PLAYER_STATES.LEFT_DODGE:
+        //        {
+        //        }
+        //        break;
+        //    case PLAYER_STATES.RIGHT_DODGE:
+        //        {
+        //        }
+        //        break;
+        //    default:
+        //        {
+        //        }
+        //        break;
+        //}
     }
     public void RequestRightPunch()
     {
@@ -77,6 +73,8 @@ public class PlayerManager : MonoBehaviour
     {
         if (player_state == PLAYER_STATES.IDLE)
         {
+            player_state = PLAYER_STATES.RIGHT_DODGE;
+            anim.SetTrigger("RightDodge");
         }
         else
         {
@@ -88,10 +86,24 @@ public class PlayerManager : MonoBehaviour
     {
         if (player_state == PLAYER_STATES.IDLE)
         {
+            player_state = PLAYER_STATES.RIGHT_DODGE;
+            anim.SetTrigger("LeftDodge");
         }
         else
         {
             //TODO: Play error sound / tired
         }
+    }
+
+    //TODO: Check in which state the other player is
+    public void LeftPunchAnimationEvent()
+    {
+
+    }
+
+
+    public void RightPunchAnimationEvent()
+    {
+
     }
 }

@@ -790,7 +790,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 548736289}
-        m_MethodName: RequestLeftPunch
+        m_MethodName: RequestLeftDodge
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -919,7 +919,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 548736289}
-        m_MethodName: RequestRightPunch
+        m_MethodName: RequestRightDodge
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
