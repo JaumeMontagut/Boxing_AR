@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    public Animator anim;
+   private Animator anim;
+
    public enum PLAYER_STATES   
     {
         IDLE, 
@@ -16,13 +17,12 @@ public class PlayerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        anim = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
         Debug.Log(player_state);
        
     }
