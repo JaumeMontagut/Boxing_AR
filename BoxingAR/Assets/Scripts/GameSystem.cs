@@ -4,15 +4,34 @@ using UnityEngine;
 
 public class GameSystem : MonoBehaviour
 {
+    int win_player = 0;
+    int rounds = 0;
     //TODO: Make this a singleton
 
     public void GameWin()
     {
-        //TODO: Show Game Win UI, etc.
+        rounds++;
+        win_player++;
+        if (win_player >= 5) //Win
+        {
+            //TODO: Show Game Win UI, etc.
+        }
+        else
+        {
+            //Recover life
+        }
     }
 
     public void GameOver()
     {
-        //TODO: Show Game Over UI, etc.
+        rounds++;
+        if (rounds - win_player >= 5) //Lose
+        {
+            //TODO: Show Game Over UI, etc.
+        }
+        else
+        {
+            //Recover life
+        }
     }
 }
