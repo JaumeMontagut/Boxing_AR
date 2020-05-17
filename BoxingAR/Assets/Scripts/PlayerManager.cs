@@ -41,6 +41,16 @@ public class PlayerManager : Entity
 
     }
 
+    public void RequestRightPunchRelease()
+    {
+        anim.SetTrigger("RightReleasePunch");
+    }
+
+    public void RequestLeftPunchRelease()
+    {
+        anim.SetTrigger("LeftReleasePunch");
+    }
+
     public void RequestRightDodge()
     {
         if (entityState == ENTITY_STATE.IDLE)
