@@ -16,6 +16,7 @@ public class PlayerManager : Entity
         if (entityState == ENTITY_STATE.IDLE)
         {
             entityState = ENTITY_STATE.PUNCH_ANTICIPATION;
+            punchDir = DIRECTION.RIGHT;
             anim.SetTrigger("RightPunch");
         }
         else
@@ -29,6 +30,7 @@ public class PlayerManager : Entity
         if (entityState == ENTITY_STATE.IDLE)
         {
             entityState = ENTITY_STATE.PUNCH_ANTICIPATION;
+            punchDir = DIRECTION.LEFT;
             anim.SetTrigger("LeftPunch");
         }
         else
@@ -64,27 +66,19 @@ public class PlayerManager : Entity
         }
     }
 
-    public void LeftPunchEvent()
+    public void PunchEvent()
     {
         entityState = ENTITY_STATE.PUNCH;
     }
 
-    public void RightPunchEvent()
-    {
-        entityState = ENTITY_STATE.PUNCH;
-    }
-
-    public void LeftPunchRecoveryEvent()
+    public void PunchRecoveryEvent()
     {
         entityState = ENTITY_STATE.PUNCH_RECOVERY;
         opponent.hitByLastAttack = false;
     }
 
-    public void RightPunchRecoveryEvent()
+    protected override void EntityDead()
     {
-        entityState = ENTITY_STATE.PUNCH_RECOVERY;
-        opponent.hitByLastAttack = false;
+        gameManager.GameOver();
     }
-
-
 }

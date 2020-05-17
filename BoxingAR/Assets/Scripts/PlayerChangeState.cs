@@ -13,7 +13,7 @@ public class PlayerChangeState : StateMachineBehaviour
         {
             entity = animator.gameObject.GetComponent<Entity>();
         }
-        entity.entityState = Entity.ENTITY_STATE.IDLE;
+        entity.BackToIdle();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

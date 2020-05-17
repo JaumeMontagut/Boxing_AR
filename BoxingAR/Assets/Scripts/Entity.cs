@@ -23,7 +23,7 @@ public class Entity : MonoBehaviour
         INVALID
     };
 
-    [HideInInspector] public ENTITY_STATE entityState = ENTITY_STATE.IDLE;
+    protected ENTITY_STATE entityState = ENTITY_STATE.IDLE;
     protected DIRECTION entityPos = DIRECTION.MIDDLE;
     protected DIRECTION punchDir = DIRECTION.INVALID;
 
@@ -34,13 +34,6 @@ public class Entity : MonoBehaviour
 
     protected float punchDamage = 15;
     [HideInInspector] public bool hitByLastAttack = false;
-
-    protected GameSystem gameManager;
-
-    private void Start()
-    {
-        gameManager = FindObjectOfType<GameSystem>();
-    }
 
     private void Update()
     {
@@ -74,7 +67,7 @@ public class Entity : MonoBehaviour
                 hitByLastAttack = true;
                 if (IsDead())
                 {
-                    gameManager.GameOver();
+                    EntityDead();
                 }
             }
             //TODO: Possible thing, add "tired" frames where you are exposed if you miss
@@ -87,7 +80,7 @@ public class Entity : MonoBehaviour
                 hitByLastAttack = true;
                 if (IsDead())
                 {
-                    gameManager.GameOver();
+                    EntityDead();
                 }
             }
             //TODO: Possible thing, add "tired" frames where you are exposed if you miss
@@ -97,5 +90,15 @@ public class Entity : MonoBehaviour
     public bool IsDead()
     {
         return maxLife <= 0;
+    }
+
+    protected virtual void EntityDead()
+    {}
+
+    public void BackToIdle()
+    {
+        entityState = ENTITY_STATE.IDLE;
+        entityPos = DIRECTION.MIDDLE;
+        punchDir = DIRECTION.INVALID;
     }
 }
