@@ -86,6 +86,7 @@ public class Entity : MonoBehaviour
             {
                 currLife -= damage;
                 anim.SetTrigger("RightHit");
+                Debug.Log("right attack");
                 hitByLastAttack = true;
                 if (IsDead())
                 {

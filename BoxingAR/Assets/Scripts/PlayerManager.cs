@@ -6,7 +6,7 @@ public class PlayerManager : Entity
 {
     private GameSystem gameManager;
 
-    protected void Start()
+    protected override void Start()
     {
         gameManager = FindObjectOfType<GameSystem>();
         base.Start();
