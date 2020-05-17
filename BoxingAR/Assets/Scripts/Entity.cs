@@ -71,7 +71,7 @@ public class Entity : MonoBehaviour
             if (entityPos == DIRECTION.LEFT || entityPos == DIRECTION.MIDDLE)
             {
                 currLife -= damage;
-                anim.SetTrigger("LeftHit");
+                anim.SetTrigger("LeftHit");//TODO: Set RightHit or LeftHit depending on the way the entity is positioned (it could be in the middle, ideling to the right or left)
                 hitByLastAttack = true;
                 if (IsDead())
                 {
@@ -85,7 +85,7 @@ public class Entity : MonoBehaviour
             if (entityPos == DIRECTION.RIGHT || entityPos == DIRECTION.MIDDLE)
             {
                 currLife -= damage;
-                anim.SetTrigger("RightHit");
+                anim.SetTrigger("RightHit");//TODO: Set RightHit or LeftHit depending on the way the entity is positioned (it could be in the middle, ideling to the right or left)
                 Debug.Log("right attack");
                 hitByLastAttack = true;
                 if (IsDead())
