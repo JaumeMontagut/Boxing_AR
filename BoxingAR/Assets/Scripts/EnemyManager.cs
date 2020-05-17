@@ -15,6 +15,7 @@ public class EnemyManager : Entity
 
     float timer = 0f;
     float timeBtwAttacks = 0f;
+    public Vector2 randomTime = new Vector2(5f, 10f);
 
     protected override void Start()
     {
@@ -22,7 +23,7 @@ public class EnemyManager : Entity
         base.Start();
 
         timer = Time.time;
-        timeBtwAttacks = Random.Range(5f, 10f);
+        timeBtwAttacks = Random.Range(randomTime.x, randomTime.y);
     }
 
     protected override void Update()
@@ -74,6 +75,7 @@ public class EnemyManager : Entity
                     break;
             }
             timer = Time.time;
+            timeBtwAttacks = Random.Range(randomTime.x, randomTime.y);
         }
     }
 
@@ -95,6 +97,7 @@ public class EnemyManager : Entity
                     break;
             }
             timer = Time.time;
+            timeBtwAttacks = Random.Range(randomTime.x, randomTime.y);
         }
         else
         {
@@ -121,7 +124,7 @@ public class EnemyManager : Entity
 
     private void LogicHardAttack()
     {
-        if(opponent.GetEntityState() == ENTITY_STATE.PUNCH_ANTICIPATION)
+        if (opponent.GetEntityState() == ENTITY_STATE.PUNCH_ANTICIPATION)
         {
             entityState = ENTITY_STATE.DODGE_ANTICIPATION;
             switch (opponent.GetPunchDirection())
@@ -135,6 +138,24 @@ public class EnemyManager : Entity
                     anim.SetTrigger("LeftDodge");
                     break;
             }
+        }
+        else if (Time.time - timer >= timeBtwAttacks)
+        {
+            switch (Random.Range(0, 2))
+            {
+                case 0:
+                    entityState = ENTITY_STATE.PUNCH_ANTICIPATION;
+                    punchDir = DIRECTION.LEFT;
+                    anim.SetTrigger("LeftPunch");
+                    break;
+                case 1:
+                    entityState = ENTITY_STATE.PUNCH_ANTICIPATION;
+                    punchDir = DIRECTION.RIGHT;
+                    anim.SetTrigger("RightPunch");
+                    break;
+            }
+            timer = Time.time;
+            timeBtwAttacks = Random.Range(randomTime.x, randomTime.y);
         }
     }
 
