@@ -11,11 +11,6 @@ public class PlayerManager : Entity
         anim = GetComponentInChildren<Animator>();
     }
 
-    //void Update()
-    //{
-    //    Debug.Log(entityState);
-    //}
-
     public void RequestRightPunch()
     {
         if (entityState == ENTITY_STATE.IDLE)
