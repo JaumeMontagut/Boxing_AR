@@ -42,7 +42,7 @@ public class Entity : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         switch (entityState)
         {
@@ -131,5 +131,15 @@ public class Entity : MonoBehaviour
     public void DodgeRecoveryEvent()
     {
         entityState = ENTITY_STATE.DODGE_RECOVERY;
+    }
+
+    public ENTITY_STATE GetEntityState()
+    {
+        return entityState;
+    }
+
+    public DIRECTION GetPunchDirection()
+    {
+        return punchDir;
     }
 }
