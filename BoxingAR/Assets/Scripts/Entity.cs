@@ -35,6 +35,13 @@ public class Entity : MonoBehaviour
     protected float punchDamage = 15;
     [HideInInspector] public bool hitByLastAttack = false;
 
+    protected Animator anim;
+
+    protected virtual void Start()
+    {
+        anim = GetComponentInChildren<Animator>();
+    }
+
     private void Update()
     {
         switch (entityState)
@@ -64,6 +71,7 @@ public class Entity : MonoBehaviour
             if (entityPos == DIRECTION.LEFT || entityPos == DIRECTION.MIDDLE)
             {
                 currLife -= damage;
+                anim.SetTrigger("LeftHit");
                 hitByLastAttack = true;
                 if (IsDead())
                 {
@@ -77,6 +85,7 @@ public class Entity : MonoBehaviour
             if (entityPos == DIRECTION.RIGHT || entityPos == DIRECTION.MIDDLE)
             {
                 currLife -= damage;
+                anim.SetTrigger("RightHit");
                 hitByLastAttack = true;
                 if (IsDead())
                 {
@@ -100,5 +109,26 @@ public class Entity : MonoBehaviour
         entityState = ENTITY_STATE.IDLE;
         entityPos = DIRECTION.MIDDLE;
         punchDir = DIRECTION.INVALID;
+    }
+
+    public void PunchEvent()
+    {
+        entityState = ENTITY_STATE.PUNCH;
+    }
+
+    public void PunchRecoveryEvent()
+    {
+        entityState = ENTITY_STATE.PUNCH_RECOVERY;
+        opponent.hitByLastAttack = false;
+    }
+
+    public void DodgeEvent()
+    {
+        entityState = ENTITY_STATE.DODGE;
+    }
+
+    public void DodgeRecoveryEvent()
+    {
+        entityState = ENTITY_STATE.DODGE_RECOVERY;
     }
 }

@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class PlayerManager : Entity
 {
-    private Animator anim;
+    private GameSystem gameManager;
 
-    void Start()
+    protected void Start()
     {
-        anim = GetComponentInChildren<Animator>();
+        gameManager = FindObjectOfType<GameSystem>();
+        base.Start();
     }
 
     public void RequestRightPunch()
@@ -64,17 +65,6 @@ public class PlayerManager : Entity
         {
             //TODO: Play error sound / tired
         }
-    }
-
-    public void PunchEvent()
-    {
-        entityState = ENTITY_STATE.PUNCH;
-    }
-
-    public void PunchRecoveryEvent()
-    {
-        entityState = ENTITY_STATE.PUNCH_RECOVERY;
-        opponent.hitByLastAttack = false;
     }
 
     protected override void EntityDead()
