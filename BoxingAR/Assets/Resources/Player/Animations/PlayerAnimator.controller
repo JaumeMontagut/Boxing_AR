@@ -281,16 +281,16 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1288507227645706067}
-    m_Position: {x: 410, y: 300, z: 0}
+    m_Position: {x: 380, y: 280, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4619204002457820854}
     m_Position: {x: 190, y: 470, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 780479250789212254}
-    m_Position: {x: 410, y: 350, z: 0}
+    m_Position: {x: 430, y: 390, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2876295701117841116}
-    m_Position: {x: 10, y: 330, z: 0}
+    m_Position: {x: -130, y: 280, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6881372654132445808}
     m_Position: {x: -110, y: 580, z: 0}
@@ -299,7 +299,7 @@ AnimatorStateMachine:
     m_Position: {x: 370, y: 580, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7489968946078564258}
-    m_Position: {x: -180, y: 400, z: 0}
+    m_Position: {x: -180, y: 390, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6321631049887624238}
     m_Position: {x: -180, y: 450, z: 0}
@@ -332,49 +332,49 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: RightPunch
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: RightDodge
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: LeftDodge
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: LeftHit
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: RightHit
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: LeftReleasePunch
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: RightReleasePunch
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
