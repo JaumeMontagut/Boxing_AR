@@ -1122,6 +1122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   opponent: {fileID: 8296172667857202270}
   lifeBar: {fileID: 1955789089}
+  HitSound: {fileID: 0}
   hitByLastAttack: 0
   difficult: 1
   randomTime: {x: 5, y: 10}
@@ -3435,6 +3436,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 84.4087
       objectReference: {fileID: 0}
+    - target: {fileID: 6243382150254555760, guid: d02539daee733b84e9aa638776ce2205,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6381883307445505112, guid: d02539daee733b84e9aa638776ce2205,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -3665,6 +3671,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 7937401066416262781, guid: d02539daee733b84e9aa638776ce2205,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7965138137611891800, guid: d02539daee733b84e9aa638776ce2205,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3792,6 +3803,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3294237596407605411, guid: d02539daee733b84e9aa638776ce2205, type: 3}
+    - {fileID: 2683719364524119504, guid: d02539daee733b84e9aa638776ce2205, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d02539daee733b84e9aa638776ce2205, type: 3}
 --- !u!4 &1133594719 stripped
 Transform:
@@ -4661,7 +4673,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -6786,7 +6798,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 99.32619
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2683719364524119504, guid: d02539daee733b84e9aa638776ce2205, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d02539daee733b84e9aa638776ce2205, type: 3}
 --- !u!1001 &3166228052967574305
 PrefabInstance:
