@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Entity : MonoBehaviour
 {
@@ -28,6 +29,7 @@ public class Entity : MonoBehaviour
     protected DIRECTION punchDir = DIRECTION.INVALID;
 
     public Entity opponent;
+    public Slider lifeBar;
 
     protected static float maxLife = 120;
     protected float currLife = maxLife;
@@ -71,6 +73,7 @@ public class Entity : MonoBehaviour
             if (entityPos == DIRECTION.LEFT || entityPos == DIRECTION.MIDDLE)
             {
                 currLife -= damage;
+                lifeBar.value = currLife / maxLife;
                 anim.SetTrigger("LeftHit");//TODO: Set RightHit or LeftHit depending on the way the entity is positioned (it could be in the middle, ideling to the right or left)
                 hitByLastAttack = true;
                 if (IsDead())
@@ -85,6 +88,7 @@ public class Entity : MonoBehaviour
             if (entityPos == DIRECTION.RIGHT || entityPos == DIRECTION.MIDDLE)
             {
                 currLife -= damage;
+                lifeBar.value = currLife / maxLife;
                 anim.SetTrigger("RightHit");//TODO: Set RightHit or LeftHit depending on the way the entity is positioned (it could be in the middle, ideling to the right or left)
                 Debug.Log("right attack");
                 hitByLastAttack = true;
@@ -99,11 +103,12 @@ public class Entity : MonoBehaviour
 
     public bool IsDead()
     {
-        return maxLife <= 0;
+        return currLife <= 0;
     }
 
-    protected virtual void EntityDead()
-    {}
+    //protected virtual void EntityDead() FOR DEBUGGING
+    public virtual void EntityDead()
+    { }
 
     public void BackToIdle()
     {
@@ -141,5 +146,11 @@ public class Entity : MonoBehaviour
     public DIRECTION GetPunchDirection()
     {
         return punchDir;
+    }
+
+    public void ResetLife()
+    {
+        currLife = maxLife;
+        lifeBar.value = 1f;
     }
 }

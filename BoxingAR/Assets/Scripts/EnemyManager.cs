@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyManager : Entity
 {
@@ -44,6 +45,15 @@ public class EnemyManager : Entity
                     LogicHardAttack();
                     break;
             }
+        }
+
+        //DEBUG
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            currLife -= 25;
+            lifeBar.value = currLife / maxLife;
+            if (opponent.IsDead())
+                opponent.EntityDead();
         }
     }
 
@@ -159,8 +169,10 @@ public class EnemyManager : Entity
         }
     }
 
-    protected override void EntityDead()
+    public override void EntityDead()
     {
         gameManager.GameWin();
+        ResetLife();
+        opponent.ResetLife();
     }
 }
