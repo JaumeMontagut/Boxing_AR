@@ -31,6 +31,7 @@ public class Entity : MonoBehaviour
 
     public Entity opponent;
     public Slider lifeBar;
+    public AudioSource HitSound;
 
     protected static float maxLife = 120;
     protected float currLife = maxLife;
@@ -43,6 +44,7 @@ public class Entity : MonoBehaviour
     protected virtual void Start()
     {
         anim = GetComponentInChildren<Animator>();
+        HitSound = gameObject.transform.Find("HitSound").GetComponent<AudioSource>();
     }
 
     protected virtual void Update()
@@ -77,6 +79,8 @@ public class Entity : MonoBehaviour
                 lifeBar.value = currLife / maxLife;
                 anim.SetTrigger("LeftHit");//TODO: Set RightHit or LeftHit depending on the way the entity is positioned (it could be in the middle, ideling to the right or left)
                 hitByLastAttack = true;
+                if (HitSound)
+                    HitSound.Play();
                 if (IsDead())
                 {
                     EntityDead();
@@ -93,6 +97,8 @@ public class Entity : MonoBehaviour
                 anim.SetTrigger("RightHit");//TODO: Set RightHit or LeftHit depending on the way the entity is positioned (it could be in the middle, ideling to the right or left)
                 Debug.Log("right attack");
                 hitByLastAttack = true;
+                if (HitSound)
+                    HitSound.Play();
                 if (IsDead())
                 {
                     EntityDead();
