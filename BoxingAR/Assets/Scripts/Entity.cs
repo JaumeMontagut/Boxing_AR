@@ -31,9 +31,8 @@ public class Entity : MonoBehaviour
 
     public Entity opponent;
     public Slider lifeBar;
-    AudioSource HitSound;
-    public ParticleSystem punchL;
-    public ParticleSystem punchR;
+    public AudioSource HitSound;
+
     protected static float maxLife = 120;
     protected float currLife = maxLife;
 
@@ -46,9 +45,6 @@ public class Entity : MonoBehaviour
     {
         anim = GetComponentInChildren<Animator>();
         HitSound = gameObject.transform.Find("HitSound").GetComponent<AudioSource>();
-        punchL.enableEmission = false;
-        punchR.enableEmission = false;
-
     }
 
     protected virtual void Update()

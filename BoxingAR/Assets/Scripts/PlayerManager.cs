@@ -34,7 +34,6 @@ public class PlayerManager : Entity
             entityState = ENTITY_STATE.PUNCH_ANTICIPATION;
             punchDir = DIRECTION.RIGHT;
             anim.SetTrigger("RightPunch");
-            punchR.enableEmission = true;
         }
         else
         {
@@ -49,7 +48,6 @@ public class PlayerManager : Entity
             entityState = ENTITY_STATE.PUNCH_ANTICIPATION;
             punchDir = DIRECTION.LEFT;
             anim.SetTrigger("LeftPunch");
-            punchL.enableEmission = true;
         }
         else
         {
@@ -64,7 +62,6 @@ public class PlayerManager : Entity
         {
             entityState = ENTITY_STATE.PUNCH_RELEASE;
             anim.SetTrigger("RightReleasePunch");
-            punchR.enableEmission = false;
         }
         else
         {
@@ -78,7 +75,6 @@ public class PlayerManager : Entity
         {
             entityState = ENTITY_STATE.PUNCH_RELEASE;
             anim.SetTrigger("LeftReleasePunch");
-            punchL.enableEmission = false;
         }
         else
         {
