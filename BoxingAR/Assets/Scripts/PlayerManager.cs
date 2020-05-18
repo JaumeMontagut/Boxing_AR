@@ -58,12 +58,28 @@ public class PlayerManager : Entity
 
     public void RequestRightPunchRelease()
     {
-        anim.SetTrigger("RightReleasePunch");
+        if (entityState == ENTITY_STATE.PUNCH_ANTICIPATION)
+        {
+            entityState = ENTITY_STATE.PUNCH_RELEASE;
+            anim.SetTrigger("RightReleasePunch");
+        }
+        else
+        {
+            //TODO: Play error sound / tired
+        }
     }
 
     public void RequestLeftPunchRelease()
     {
-        anim.SetTrigger("LeftReleasePunch");
+        if (entityState == ENTITY_STATE.PUNCH_ANTICIPATION)
+        {
+            entityState = ENTITY_STATE.PUNCH_RELEASE;
+            anim.SetTrigger("LeftReleasePunch");
+        }
+        else
+        {
+            //TODO: Play error sound / tired
+        }
     }
 
     public void RequestRightDodge()
