@@ -9,6 +9,7 @@ public class Entity : MonoBehaviour
     {
         IDLE,
         PUNCH_ANTICIPATION,
+        PUNCH_RELEASE,
         PUNCH,
         PUNCH_RECOVERY,
         DODGE_ANTICIPATION,
