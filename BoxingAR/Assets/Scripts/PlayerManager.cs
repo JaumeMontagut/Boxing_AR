@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerManager : Entity
 {
@@ -10,6 +11,20 @@ public class PlayerManager : Entity
     {
         gameManager = FindObjectOfType<GameSystem>();
         base.Start();
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+
+        //DEBUG
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            currLife -= 25;
+            lifeBar.value = currLife / maxLife;
+            if (opponent.IsDead())
+                opponent.EntityDead();
+        }
     }
 
     public void RequestRightPunch()
@@ -77,8 +92,10 @@ public class PlayerManager : Entity
         }
     }
 
-    protected override void EntityDead()
+    public override void EntityDead()
     {
         gameManager.GameOver();
+        ResetLife();
+        opponent.ResetLife();
     }
 }
