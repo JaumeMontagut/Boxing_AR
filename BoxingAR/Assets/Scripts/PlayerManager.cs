@@ -65,7 +65,6 @@ public class PlayerManager : Entity
         {
             entityState = ENTITY_STATE.PUNCH_RELEASE;
             anim.SetTrigger("RightReleasePunch");
-           
         }
         else
         {
@@ -80,7 +79,6 @@ public class PlayerManager : Entity
         {
             entityState = ENTITY_STATE.PUNCH_RELEASE;
             anim.SetTrigger("LeftReleasePunch");
-           
         }
         else
         {
@@ -92,7 +90,7 @@ public class PlayerManager : Entity
     {
         if (entityState == ENTITY_STATE.IDLE)
         {
-            entityState = ENTITY_STATE.DODGE_ANTICIPATION;
+            entityState = ENTITY_STATE.DODGE;
             anim.SetTrigger("RightDodge");
         }
         else
@@ -105,7 +103,7 @@ public class PlayerManager : Entity
     {
         if (entityState == ENTITY_STATE.IDLE)
         {
-            entityState = ENTITY_STATE.DODGE_ANTICIPATION;
+            entityState = ENTITY_STATE.DODGE;
             anim.SetTrigger("LeftDodge");
         }
         else

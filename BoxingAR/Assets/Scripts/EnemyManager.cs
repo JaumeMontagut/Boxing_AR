@@ -109,12 +109,12 @@ public class EnemyManager : Entity
                     ChargingParticlesR.enableEmission = true;
                     break;
                 case 2:
-                    entityState = ENTITY_STATE.DODGE_ANTICIPATION;
+                    entityState = ENTITY_STATE.DODGE;
                     entityPos = DIRECTION.RIGHT;
                     anim.SetTrigger("RightDodge");
                     break;
                 case 3:
-                    entityState = ENTITY_STATE.DODGE_ANTICIPATION;
+                    entityState = ENTITY_STATE.DODGE;
                     entityPos = DIRECTION.LEFT;
                     anim.SetTrigger("LeftDodge");
                     break;
@@ -150,22 +150,20 @@ public class EnemyManager : Entity
         }
         else
         {
-            if (opponent.GetEntityState() == ENTITY_STATE.PUNCH_ANTICIPATION)
+            if (opponent.GetEntityState() == ENTITY_STATE.PUNCH_RELEASE
+                && Random.Range(0, 100) >= 50)
             {
-                if (Random.Range(0, 100) >= 50)
+                entityState = ENTITY_STATE.DODGE;
+                switch (opponent.GetPunchDirection())
                 {
-                    entityState = ENTITY_STATE.DODGE_ANTICIPATION;
-                    switch (opponent.GetPunchDirection())
-                    {
-                        case DIRECTION.LEFT:
-                            entityPos = DIRECTION.RIGHT;
-                            anim.SetTrigger("RightDodge");
-                            break;
-                        case DIRECTION.RIGHT:
-                            entityPos = DIRECTION.LEFT;
-                            anim.SetTrigger("LeftDodge");
-                            break;
-                    }
+                    case DIRECTION.LEFT:
+                        entityPos = DIRECTION.RIGHT;
+                        anim.SetTrigger("RightDodge");
+                        break;
+                    case DIRECTION.RIGHT:
+                        entityPos = DIRECTION.LEFT;
+                        anim.SetTrigger("LeftDodge");
+                        break;
                 }
             }
         }
@@ -173,9 +171,9 @@ public class EnemyManager : Entity
 
     private void LogicHardAttack()
     {
-        if (opponent.GetEntityState() == ENTITY_STATE.PUNCH_ANTICIPATION)
+        if (opponent.GetEntityState() == ENTITY_STATE.PUNCH_RELEASE)
         {
-            entityState = ENTITY_STATE.DODGE_ANTICIPATION;
+            entityState = ENTITY_STATE.DODGE;
             switch (opponent.GetPunchDirection())
             {
                 case DIRECTION.LEFT:
