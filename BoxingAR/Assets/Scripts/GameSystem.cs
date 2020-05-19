@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameSystem : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class GameSystem : MonoBehaviour
     GameObject playerwinLight;
     GameObject enemywinLight;
 
-
+   public GameObject buttonsEndGame;
 
 
     private void Start()
@@ -32,6 +33,7 @@ public class GameSystem : MonoBehaviour
         enemy_anim = Enemy.GetComponent<Animator>();
         playerwinLight = Player.transform.Find("WinLight").gameObject;
         enemywinLight = Enemy.transform.Find("WinLight").gameObject;
+        buttonsEndGame.SetActive(false);
     }
     //TODO: Make this a singleton
 
@@ -57,6 +59,7 @@ public class GameSystem : MonoBehaviour
             enemy_anim.SetBool("Defeat", true);
             winText.SetActive(true);
             playerwinLight.SetActive(true);
+            buttonsEndGame.SetActive(true);
         }
         else
         {
@@ -78,11 +81,13 @@ public class GameSystem : MonoBehaviour
         {
             Debug.Log("Game over entered");
             //TODO: Show Game Over UI, etc.
-            loseText.SetActive(true);
 
             player_anim.SetBool("Defeat", true);
             enemy_anim.SetBool("Victory", true);
             enemywinLight.SetActive(true);
+            loseText.SetActive(true);
+
+            buttonsEndGame.SetActive(true);
         }
         else
         {
@@ -110,5 +115,26 @@ public class GameSystem : MonoBehaviour
         Debug.Log(rounds_enemy);
         Debug.Log(rounds_enemy);
         rounds_enemy.transform.Find((rounds - win_player).ToString()).gameObject.SetActive(true);
+    }
+
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void ResetGame()
+    {
+        win_player = 0;
+        rounds = 0;
+        player_anim.SetBool("Victory", false);
+        player_anim.SetBool("Defeat", false);
+        enemy_anim.SetBool("Victory", false);
+        enemy_anim.SetBool("Defeat", false);
+        Enemy.GetComponent<EnemyManager>().difficult = EnemyManager.Difficult.EASY;
+        buttonsEndGame.SetActive(false);
+        winText.SetActive(false);
+        playerwinLight.SetActive(false);
+        enemywinLight.SetActive(false);
+        loseText.SetActive(false);
     }
 }
