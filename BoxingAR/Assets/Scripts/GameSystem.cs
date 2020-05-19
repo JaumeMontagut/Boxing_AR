@@ -32,6 +32,7 @@ public class GameSystem : MonoBehaviour
         }
         else
         {
+            robots.transform.Find("Enemy").GetComponent<EnemyManager>().difficult++;
             //Recover life
         }
     }
