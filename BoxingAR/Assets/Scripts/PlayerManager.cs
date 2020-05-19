@@ -27,10 +27,10 @@ public class PlayerManager : Entity
             switch (punchDir)
             {
                 case DIRECTION.LEFT:
-                    leftPunchFill.fillAmount = (Time.time - timerPunch) / maxTimePunch;
+                    leftPunchFill.fillAmount = (Time.time - timerPunch);
                     break;
                 case DIRECTION.RIGHT:
-                    rightPunchFill.fillAmount = (Time.time - timerPunch) / maxTimePunch;
+                    rightPunchFill.fillAmount = (Time.time - timerPunch);
                     break;
             }
         }
@@ -89,7 +89,6 @@ public class PlayerManager : Entity
         {
             entityState = ENTITY_STATE.PUNCH_RELEASE;
             anim.SetTrigger("RightReleasePunch");
-            opponent.multiplier = (Time.time - timerPunch) / maxTimePunch;
         }
         else
         {
@@ -106,7 +105,6 @@ public class PlayerManager : Entity
         {
             entityState = ENTITY_STATE.PUNCH_RELEASE;
             anim.SetTrigger("LeftReleasePunch");
-            opponent.multiplier = (Time.time - timerPunch) / maxTimePunch;
         }
         else
         {
