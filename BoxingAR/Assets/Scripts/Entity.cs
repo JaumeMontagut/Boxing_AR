@@ -31,7 +31,9 @@ public class Entity : MonoBehaviour
 
     public Entity opponent;
     public Slider lifeBar;
-    public AudioSource HitSound;
+    AudioSource HitSound;
+    public ParticleSystem ChargingParticlesR;
+    public ParticleSystem ChargingParticlesL;
 
     protected static float maxLife = 120;
     protected float currLife = maxLife;
@@ -45,6 +47,10 @@ public class Entity : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         HitSound = gameObject.transform.Find("HitSound").GetComponent<AudioSource>();
+        //ChargingParticlesR = gameObject.transform.Find("ChargingParticalsR").GetComponent<ParticleSystem>();
+        //ChargingParticlesL = gameObject.transform.Find("ChargingParticalsL").GetComponent<ParticleSystem>();
+        ChargingParticlesR.enableEmission = false;
+        ChargingParticlesL.enableEmission = false;
     }
 
     protected virtual void Update()
