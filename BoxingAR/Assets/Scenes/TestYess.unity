@@ -1154,8 +1154,8 @@ MonoBehaviour:
   hitByLastAttack: 0
   difficult: 1
   randomTimeToAttack: {x: 5, y: 10}
-  randomTimeChargeEasy: {x: 0.5, y: 0.5}
-  randomTimeChargeMedium: {x: 0.5, y: 0.5}
+  randomTimeChargeEasy: {x: 1, y: 1}
+  randomTimeChargeMedium: {x: 1, y: 1}
   randomTimeChargeHard: {x: 0.5, y: 3}
 --- !u!1 &409752499
 GameObject:

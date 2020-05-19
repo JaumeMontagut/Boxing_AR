@@ -71,41 +71,39 @@ public class Entity : MonoBehaviour
             return;
         }
 
-        if (punchDir == DIRECTION.LEFT)
+        if (punchDir == DIRECTION.RIGHT)
         {
             if (entityPos == DIRECTION.LEFT || entityPos == DIRECTION.MIDDLE)
             {
-                currLife -= damage;
-                lifeBar.value = currLife / maxLife;
-                //TODO: Set RightHit or LeftHit depending on the way the entity is positioned (it could be in the middle, ideling to the right or left)
-                anim.Play("HitR");
-                hitByLastAttack = true;
-                if (HitSound)
-                    HitSound.Play();
-                if (IsDead())
-                {
-                    EntityDead();
-                }
+                ReceiveHit(damage, "HitR");
             }
             //TODO: Possible thing, add "tired" frames where you are exposed if you miss
         }
-        else if (punchDir == DIRECTION.RIGHT)
+        else if (punchDir == DIRECTION.LEFT)
         {
             if (entityPos == DIRECTION.RIGHT || entityPos == DIRECTION.MIDDLE)
             {
-                currLife -= damage;
-                lifeBar.value = currLife / maxLife;
-                //TODO: Set RightHit or LeftHit depending on the way the entity is positioned (it could be in the middle, ideling to the right or left)
-                anim.Play("HitL");
-                hitByLastAttack = true;
-                if (HitSound)
-                    HitSound.Play();
-                if (IsDead())
-                {
-                    EntityDead();
-                }
+                ReceiveHit(damage, "HitL");
             }
             //TODO: Possible thing, add "tired" frames where you are exposed if you miss
+        }
+    }
+
+    private void ReceiveHit(float damage, string triggerName)
+    {
+        currLife -= damage;
+        lifeBar.value = currLife / maxLife;
+        //TODO: Set RightHit or LeftHit depending on the way the entity is positioned (it could be in the middle, ideling to the right or left)
+        //If we do this we don't even need to pass the "trigger name"
+        anim.Play("HitL");
+        hitByLastAttack = true;
+        if (HitSound)
+        {
+            HitSound.Play();
+        }
+        if (IsDead())
+        {
+            EntityDead();
         }
     }
 
