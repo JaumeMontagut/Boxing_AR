@@ -180,4 +180,10 @@ public class Entity : MonoBehaviour
     //NOT CLEAN CODE (this function is only used on one of the derivate classes but the animation triggers it for both)
     public virtual void LastFrames()
     {}
+
+    public virtual void StartPunchRight()
+    {}
+
+    public virtual void StartPunchLeft()
+    { }
 }

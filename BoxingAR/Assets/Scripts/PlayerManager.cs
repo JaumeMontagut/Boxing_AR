@@ -85,7 +85,7 @@ public class PlayerManager : Entity
 
     }
 
-    public void StartPunchLeft()
+    public override void StartPunchLeft()
     {
         punchDir = DIRECTION.LEFT; 
         entityState = ENTITY_STATE.PUNCH_ANTICIPATION;
@@ -94,7 +94,7 @@ public class PlayerManager : Entity
         timerPunch = Time.time;
     }
 
-    public void StartPunchRight()
+    public override void StartPunchRight()
     {
         punchDir = DIRECTION.RIGHT;
         entityState = ENTITY_STATE.PUNCH_ANTICIPATION;
