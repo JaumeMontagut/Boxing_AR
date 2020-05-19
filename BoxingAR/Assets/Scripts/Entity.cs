@@ -141,7 +141,7 @@ public class Entity : MonoBehaviour
     public virtual void EntityDead()
     { }
 
-    public void BackToIdle()
+    public virtual void BackToIdle()
     {
         entityState = ENTITY_STATE.IDLE;
         entityPos = DIRECTION.MIDDLE;
