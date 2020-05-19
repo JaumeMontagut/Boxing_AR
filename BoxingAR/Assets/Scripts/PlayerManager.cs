@@ -91,6 +91,7 @@ public class PlayerManager : Entity
         if (entityState == ENTITY_STATE.IDLE)
         {
             entityState = ENTITY_STATE.DODGE;
+            entityPos = DIRECTION.RIGHT;
             anim.SetTrigger("RightDodge");
         }
         else
@@ -104,6 +105,7 @@ public class PlayerManager : Entity
         if (entityState == ENTITY_STATE.IDLE)
         {
             entityState = ENTITY_STATE.DODGE;
+            entityPos = DIRECTION.LEFT;
             anim.SetTrigger("LeftDodge");
         }
         else

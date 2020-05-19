@@ -145,18 +145,6 @@ public class Entity : MonoBehaviour
         opponent.hitByLastAttack = false;
     }
 
-    public void LeftDodgeEvent()
-    {
-        entityState = ENTITY_STATE.DODGE;
-        entityPos = DIRECTION.LEFT;
-    }
-
-    public void RightDodgeEvent()
-    {
-        entityState = ENTITY_STATE.DODGE;
-        entityPos = DIRECTION.RIGHT;
-    }
-
     public void DodgeRecoveryEvent()
     {
         entityState = ENTITY_STATE.DODGE_RECOVERY;

@@ -176,12 +176,12 @@ public class EnemyManager : Entity
             entityState = ENTITY_STATE.DODGE;
             switch (opponent.GetPunchDirection())
             {
-                case DIRECTION.LEFT:
+                case DIRECTION.RIGHT:
                     entityPos = DIRECTION.RIGHT;
                     anim.SetTrigger("RightDodge");
                    
                     break;
-                case DIRECTION.RIGHT:
+                case DIRECTION.LEFT:
                     entityPos = DIRECTION.LEFT;
                     anim.SetTrigger("LeftDodge");
                   
