@@ -14,17 +14,21 @@ public class EnemyManager : Entity
 
     public Difficult difficult = Difficult.MEDIUM;
 
-    float timer = 0f;
+    float timerAttack = 0f;
+    float timerCharge = 0f;
     float timeBtwAttacks = 0f;
-    public Vector2 randomTime = new Vector2(5f, 10f);
+    float timeCharging = 0f;
+    public Vector2 randomTimeToAttack = new Vector2(5f, 10f);
+    public Vector2 randomTimeCharge = new Vector2(0.5f, 3f);
 
     protected override void Start()
     {
         gameManager = FindObjectOfType<GameSystem>();
         base.Start();
 
-        timer = Time.time;
-        timeBtwAttacks = Random.Range(randomTime.x, randomTime.y);
+        timerAttack = Time.time;
+        timerCharge = Time.time;
+        timeBtwAttacks = Random.Range(randomTimeToAttack.x, randomTimeToAttack.y);
     }
 
     protected override void Update()
@@ -49,6 +53,24 @@ public class EnemyManager : Entity
                     break;
             }
         }
+        else if (entityState == ENTITY_STATE.PUNCH_ANTICIPATION)
+        {
+            if (Time.time - timerCharge >= timeCharging)
+            {
+                entityState = ENTITY_STATE.PUNCH_RELEASE;
+                switch (punchDir)
+                {
+                    case DIRECTION.LEFT:
+                        anim.SetTrigger("LeftReleasePunch");
+                        break;
+                    case DIRECTION.RIGHT:
+                        anim.SetTrigger("RightReleasePunch");
+                        break;
+                }
+                timerAttack = Time.time;
+                timeBtwAttacks = Random.Range(randomTimeToAttack.x, randomTimeToAttack.y);
+            }
+        }
 
         //DEBUG
         if (Input.GetKeyDown(KeyCode.Q))
@@ -62,7 +84,7 @@ public class EnemyManager : Entity
 
     private void LogicEasyAttack()
     {
-        if (Time.time - timer >= timeBtwAttacks)
+        if (Time.time - timerAttack >= timeBtwAttacks)
         {
             switch (Random.Range(0, 4))
             {
@@ -87,14 +109,14 @@ public class EnemyManager : Entity
                     anim.SetTrigger("LeftDodge");
                     break;
             }
-            timer = Time.time;
-            timeBtwAttacks = Random.Range(randomTime.x, randomTime.y);
+            timerCharge = Time.time;
+            timeCharging = Random.Range(randomTimeCharge.x, randomTimeCharge.y);
         }
     }
 
     private void LogicMediumAttack()
     {
-        if (Time.time - timer >= timeBtwAttacks)
+        if (Time.time - timerAttack >= timeBtwAttacks)
         {
             switch (Random.Range(0, 2))
             {
@@ -109,8 +131,8 @@ public class EnemyManager : Entity
                     anim.SetTrigger("RightPunch");
                     break;
             }
-            timer = Time.time;
-            timeBtwAttacks = Random.Range(randomTime.x, randomTime.y);
+            timerCharge = Time.time;
+            timeCharging = Random.Range(randomTimeCharge.x, randomTimeCharge.y);
         }
         else
         {
@@ -152,7 +174,7 @@ public class EnemyManager : Entity
                     break;
             }
         }
-        else if (Time.time - timer >= timeBtwAttacks)
+        else if (Time.time - timerAttack >= timeBtwAttacks)
         {
             switch (Random.Range(0, 2))
             {
@@ -167,8 +189,8 @@ public class EnemyManager : Entity
                     anim.SetTrigger("RightPunch");
                     break;
             }
-            timer = Time.time;
-            timeBtwAttacks = Random.Range(randomTime.x, randomTime.y);
+            timerCharge = Time.time;
+            timeCharging = Random.Range(randomTimeCharge.x, randomTimeCharge.y);
         }
     }
 
