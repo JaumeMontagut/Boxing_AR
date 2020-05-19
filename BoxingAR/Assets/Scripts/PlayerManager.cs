@@ -6,10 +6,11 @@ using UnityEngine.UI;
 public class PlayerManager : Entity
 {
     private GameSystem gameManager;
-
+    public AudioSource chargingSound;
     protected override void Start()
     {
         gameManager = FindObjectOfType<GameSystem>();
+        chargingSound = gameObject.transform.Find("ChargingSound").GetComponent<AudioSource>();
         base.Start();
     }
 
@@ -35,6 +36,7 @@ public class PlayerManager : Entity
             punchDir = DIRECTION.RIGHT;
             anim.SetTrigger("RightPunch");
             ChargingParticlesR.enableEmission = true;
+            chargingSound.Play();
         }
         else
         {
@@ -50,6 +52,7 @@ public class PlayerManager : Entity
             punchDir = DIRECTION.LEFT;
             anim.SetTrigger("LeftPunch");
             ChargingParticlesL.enableEmission = true;
+            chargingSound.Play();
         }
         else
         {
@@ -61,6 +64,7 @@ public class PlayerManager : Entity
     public void RequestRightPunchRelease()
     {
         ChargingParticlesR.enableEmission = false;
+        chargingSound.Stop();
         if (entityState == ENTITY_STATE.PUNCH_ANTICIPATION)
         {
             entityState = ENTITY_STATE.PUNCH_RELEASE;
@@ -75,6 +79,7 @@ public class PlayerManager : Entity
     public void RequestLeftPunchRelease()
     {
         ChargingParticlesL.enableEmission = false;
+        chargingSound.Stop();
         if (entityState == ENTITY_STATE.PUNCH_ANTICIPATION)
         {
             entityState = ENTITY_STATE.PUNCH_RELEASE;
