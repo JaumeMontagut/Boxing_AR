@@ -36,7 +36,7 @@ public class EnemyManager : Entity
             switch (difficult)
             {
                 case Difficult.PUNCH_BAG:
-                    //Literally doesn't do anything
+                    //Literally does nothing
                     break;
                 case Difficult.EASY:
                     LogicEasyAttack();
@@ -62,9 +62,9 @@ public class EnemyManager : Entity
 
     private void LogicEasyAttack()
     {
-        if(Time.time - timer >= timeBtwAttacks)
+        if (Time.time - timer >= timeBtwAttacks)
         {
-            switch(Random.Range(0, 4))
+            switch (Random.Range(0, 4))
             {
                 case 0:
                     entityState = ENTITY_STATE.PUNCH_ANTICIPATION;
