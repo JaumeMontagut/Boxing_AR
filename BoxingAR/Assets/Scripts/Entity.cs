@@ -135,9 +135,9 @@ public class Entity : MonoBehaviour
 
     //protected virtual void EntityDead() FOR DEBUGGING
     public virtual void EntityDead()
-    { }
+    {}
 
-    public void BackToIdle()
+    public virtual void BackToIdle()
     {
         entityState = ENTITY_STATE.IDLE;
         entityPos = DIRECTION.MIDDLE;
@@ -176,4 +176,8 @@ public class Entity : MonoBehaviour
         currLife = maxLife;
         lifeBar.value = 1f;
     }
+
+    //NOT CLEAN CODE (this function is only used on one of the derivate classes but the animation triggers it for both)
+    public virtual void LastFrames()
+    {}
 }
