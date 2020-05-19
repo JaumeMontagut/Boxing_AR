@@ -7,6 +7,13 @@ public class PlayerManager : Entity
 {
     private GameSystem gameManager;
     public AudioSource chargingSound;
+
+    public Image rightPunchFill;
+    public Image leftPunchFill;
+
+    private float timerPunch = 0f;
+    public  float maxTimePunch = 1f;
+
     protected override void Start()
     {
         gameManager = FindObjectOfType<GameSystem>();
@@ -17,7 +24,20 @@ public class PlayerManager : Entity
     protected override void Update()
     {
         base.Update();
-        //Debug.Log(entityState.ToString());
+
+        if(entityState == ENTITY_STATE.PUNCH_ANTICIPATION)
+        {
+            switch (punchDir)
+            {
+                case DIRECTION.LEFT:
+                    leftPunchFill.fillAmount = (Time.time - timerPunch) / maxTimePunch;
+                    break;
+                case DIRECTION.RIGHT:
+                    rightPunchFill.fillAmount = (Time.time - timerPunch) / maxTimePunch;
+                    break;
+            }
+        }
+
         //DEBUG
         if (Input.GetKeyDown(KeyCode.W))
         {
@@ -37,6 +57,7 @@ public class PlayerManager : Entity
             anim.SetTrigger("RightPunch");
             ChargingParticlesR.enableEmission = true;
             chargingSound.Play();
+            timerPunch = Time.time;
         }
         else
         {
@@ -53,6 +74,7 @@ public class PlayerManager : Entity
             anim.SetTrigger("LeftPunch");
             ChargingParticlesL.enableEmission = true;
             chargingSound.Play();
+            timerPunch = Time.time;
         }
         else
         {
@@ -65,6 +87,7 @@ public class PlayerManager : Entity
     {
         ChargingParticlesR.enableEmission = false;
         chargingSound.Stop();
+        rightPunchFill.fillAmount = 0f;
         if (entityState == ENTITY_STATE.PUNCH_ANTICIPATION)
         {
             entityState = ENTITY_STATE.PUNCH_RELEASE;
@@ -80,6 +103,7 @@ public class PlayerManager : Entity
     {
         ChargingParticlesL.enableEmission = false;
         chargingSound.Stop();
+        leftPunchFill.fillAmount = 0f;
         if (entityState == ENTITY_STATE.PUNCH_ANTICIPATION)
         {
             entityState = ENTITY_STATE.PUNCH_RELEASE;
@@ -122,6 +146,8 @@ public class PlayerManager : Entity
     protected override void Hitted()
     {
         chargingSound.Stop();
+        leftPunchFill.fillAmount = 0f;
+        rightPunchFill.fillAmount = 0f;
     }
 
     public override void EntityDead()
