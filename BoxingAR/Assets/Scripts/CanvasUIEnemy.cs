@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CanvasUIEnemy : MonoBehaviour
 {
+    public Transform camera;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +14,6 @@ public class CanvasUIEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(Camera.current.transform);
+        transform.LookAt(camera);
     }
 }

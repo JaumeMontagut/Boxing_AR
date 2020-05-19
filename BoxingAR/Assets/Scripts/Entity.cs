@@ -37,6 +37,10 @@ public class Entity : MonoBehaviour
     protected static float maxLife = 120;
     protected float currLife = maxLife;
 
+    [HideInInspector] public float multiplier = 1f;
+    protected float timerPunch = 0f;
+    public float maxTimePunch = 1f;
+
     protected float punchDamage = 15;
     [HideInInspector] public bool hitByLastAttack = false;
     [HideInInspector] public bool start = false;
@@ -100,7 +104,8 @@ public class Entity : MonoBehaviour
 
     private void ReceiveHit(float damage, string triggerName)
     {
-        currLife -= damage;
+        currLife -= damage * multiplier;
+        Debug.Log(damage * multiplier);
         lifeBar.value = currLife / maxLife;
         anim.ResetTrigger("LeftPunch");
         anim.ResetTrigger("RightPunch");
@@ -109,6 +114,8 @@ public class Entity : MonoBehaviour
         anim.ResetTrigger("LeftDodge");
         anim.ResetTrigger("RightDodge");
         Hitted();
+        opponent.multiplier = 1f;
+        multiplier = 1f;
         //TODO: Set RightHit or LeftHit depending on the way the entity is positioned (it could be in the middle, ideling to the right or left)
         //If we do this we don't even need to pass the "trigger name"
         anim.Play(triggerName);
