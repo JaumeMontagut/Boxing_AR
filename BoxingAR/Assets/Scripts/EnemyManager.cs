@@ -41,54 +41,57 @@ public class EnemyManager : Entity
 
     protected override void Update()
     {
-        base.Update();
+        if (start)
+        {
+            base.Update();
 
-        if (entityState == ENTITY_STATE.IDLE)
-        {
-            switch (difficult)
+            if (entityState == ENTITY_STATE.IDLE)
             {
-                case Difficult.PUNCH_BAG:
-                    //Literally does nothing
-                    break;
-                case Difficult.EASY:
-                    LogicEasyAttack();
-                    break;
-                case Difficult.MEDIUM:
-                    LogicMediumAttack();
-                    break;
-                case Difficult.HARD:
-                    LogicHardAttack();
-                    break;
-            }
-        }
-        else if (entityState == ENTITY_STATE.PUNCH_ANTICIPATION)
-        {
-            if (Time.time - timerCharge >= timeCharging)
-            {
-                entityState = ENTITY_STATE.PUNCH_RELEASE;
-                switch (punchDir)
+                switch (difficult)
                 {
-                    case DIRECTION.LEFT:
-                        anim.SetTrigger("LeftReleasePunch");
-                        ChargingParticlesL.enableEmission = false;
+                    case Difficult.PUNCH_BAG:
+                        //Literally does nothing
                         break;
-                    case DIRECTION.RIGHT:
-                        anim.SetTrigger("RightReleasePunch");
-                        ChargingParticlesR.enableEmission = false;
+                    case Difficult.EASY:
+                        LogicEasyAttack();
+                        break;
+                    case Difficult.MEDIUM:
+                        LogicMediumAttack();
+                        break;
+                    case Difficult.HARD:
+                        LogicHardAttack();
                         break;
                 }
-                timerAttack = Time.time;
-                timeBtwAttacks = Random.Range(randomTimeToAttack.x, randomTimeToAttack.y);
             }
-        }
+            else if (entityState == ENTITY_STATE.PUNCH_ANTICIPATION)
+            {
+                if (Time.time - timerCharge >= timeCharging)
+                {
+                    entityState = ENTITY_STATE.PUNCH_RELEASE;
+                    switch (punchDir)
+                    {
+                        case DIRECTION.LEFT:
+                            anim.SetTrigger("LeftReleasePunch");
+                            ChargingParticlesL.enableEmission = false;
+                            break;
+                        case DIRECTION.RIGHT:
+                            anim.SetTrigger("RightReleasePunch");
+                            ChargingParticlesR.enableEmission = false;
+                            break;
+                    }
+                    timerAttack = Time.time;
+                    timeBtwAttacks = Random.Range(randomTimeToAttack.x, randomTimeToAttack.y);
+                }
+            }
 
-        //DEBUG
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            currLife -= 25;
-            lifeBar.value = currLife / maxLife;
-            if (opponent.IsDead())
-                opponent.EntityDead();
+            //DEBUG
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                currLife -= 25;
+                lifeBar.value = currLife / maxLife;
+                if (opponent.IsDead())
+                    opponent.EntityDead();
+            }
         }
     }
 
@@ -226,7 +229,5 @@ public class EnemyManager : Entity
     public override void EntityDead()
     {
         gameManager.GameWin();
-        ResetLife();
-        opponent.ResetLife();
     }
 }

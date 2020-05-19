@@ -39,6 +39,7 @@ public class Entity : MonoBehaviour
 
     protected float punchDamage = 15;
     [HideInInspector] public bool hitByLastAttack = false;
+    [HideInInspector] public bool start = false;
 
     protected Animator anim;
 
@@ -54,18 +55,21 @@ public class Entity : MonoBehaviour
 
     protected virtual void Update()
     {
-        switch (entityState)
+        if (start)
         {
-            case ENTITY_STATE.PUNCH:
-                {
-                    //We check every every frame that's on the punch state (it's like a collider that stays every few frames)
-                    opponent.CheckHit(punchDir, punchDamage);
-                }
-                break;
-            default:
-                {
-                }
-                break;
+            switch (entityState)
+            {
+                case ENTITY_STATE.PUNCH:
+                    {
+                        //We check every every frame that's on the punch state (it's like a collider that stays every few frames)
+                        opponent.CheckHit(punchDir, punchDamage);
+                    }
+                    break;
+                default:
+                    {
+                    }
+                    break;
+            }
         }
     }
 
@@ -104,6 +108,7 @@ public class Entity : MonoBehaviour
         anim.ResetTrigger("RightReleasePunch");
         anim.ResetTrigger("LeftDodge");
         anim.ResetTrigger("RightDodge");
+        Hitted();
         //TODO: Set RightHit or LeftHit depending on the way the entity is positioned (it could be in the middle, ideling to the right or left)
         //If we do this we don't even need to pass the "trigger name"
         anim.Play(triggerName);
@@ -117,6 +122,8 @@ public class Entity : MonoBehaviour
             EntityDead();
         }
     }
+
+    protected virtual void Hitted() { }
 
     public bool IsDead()
     {

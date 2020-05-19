@@ -9,11 +9,15 @@ public class GameSystem : MonoBehaviour
 
     public GameObject rounds_enemy;
     public GameObject rounds_player;
+
     public GameObject Player;
     public GameObject Enemy;
     
     Animator player_anim;
     Animator enemy_anim;
+
+    public GameObject robots;
+
 
 
     private void Start()
@@ -23,6 +27,14 @@ public class GameSystem : MonoBehaviour
 
     }
     //TODO: Make this a singleton
+
+    public void StartGame()
+    {
+        foreach(Transform t in robots.transform)
+        {
+            t.gameObject.GetComponent<Entity>().start = true;
+        }
+    }
 
     public void GameWin()
     {
@@ -39,7 +51,13 @@ public class GameSystem : MonoBehaviour
         }
         else
         {
+            robots.transform.Find("Enemy").GetComponent<EnemyManager>().difficult++;
             //Recover life
+        }
+
+        foreach (Transform t in robots.transform)
+        {
+            t.gameObject.GetComponent<Entity>().ResetLife();
         }
     }
 
@@ -59,6 +77,11 @@ public class GameSystem : MonoBehaviour
         else
         {
             //Recover life
+        }
+
+        foreach (Transform t in robots.transform)
+        {
+            t.gameObject.GetComponent<Entity>().ResetLife();
         }
     }
 

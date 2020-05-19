@@ -119,10 +119,13 @@ public class PlayerManager : Entity
         }
     }
 
+    protected override void Hitted()
+    {
+        chargingSound.Stop();
+    }
+
     public override void EntityDead()
     {
         gameManager.GameOver();
-        ResetLife();
-        opponent.ResetLife();
     }
 }
