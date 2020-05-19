@@ -68,9 +68,11 @@ public class EnemyManager : Entity
                 {
                     case DIRECTION.LEFT:
                         anim.SetTrigger("LeftReleasePunch");
+                        ChargingParticlesL.enableEmission = false;
                         break;
                     case DIRECTION.RIGHT:
                         anim.SetTrigger("RightReleasePunch");
+                        ChargingParticlesR.enableEmission = false;
                         break;
                 }
                 timerAttack = Time.time;
@@ -98,11 +100,13 @@ public class EnemyManager : Entity
                     entityState = ENTITY_STATE.PUNCH_ANTICIPATION;
                     punchDir = DIRECTION.LEFT;
                     anim.SetTrigger("LeftPunch");
+                    ChargingParticlesL.enableEmission = true;
                     break;
                 case 1:
                     entityState = ENTITY_STATE.PUNCH_ANTICIPATION;
                     punchDir = DIRECTION.RIGHT;
                     anim.SetTrigger("RightPunch");
+                    ChargingParticlesR.enableEmission = true;
                     break;
                 case 2:
                     entityState = ENTITY_STATE.DODGE_ANTICIPATION;
@@ -130,11 +134,15 @@ public class EnemyManager : Entity
                     entityState = ENTITY_STATE.PUNCH_ANTICIPATION;
                     punchDir = DIRECTION.LEFT;
                     anim.SetTrigger("LeftPunch");
+                    ChargingParticlesL.enableEmission = true;
+                    Debug.Log("entered");
                     break;
                 case 1:
                     entityState = ENTITY_STATE.PUNCH_ANTICIPATION;
                     punchDir = DIRECTION.RIGHT;
                     anim.SetTrigger("RightPunch");
+                    ChargingParticlesR.enableEmission = true;
+                    Debug.Log("entered");
                     break;
             }
             timerCharge = Time.time;
@@ -173,10 +181,12 @@ public class EnemyManager : Entity
                 case DIRECTION.LEFT:
                     entityPos = DIRECTION.RIGHT;
                     anim.SetTrigger("RightDodge");
+                   
                     break;
                 case DIRECTION.RIGHT:
                     entityPos = DIRECTION.LEFT;
                     anim.SetTrigger("LeftDodge");
+                  
                     break;
             }
         }
@@ -188,11 +198,13 @@ public class EnemyManager : Entity
                     entityState = ENTITY_STATE.PUNCH_ANTICIPATION;
                     punchDir = DIRECTION.LEFT;
                     anim.SetTrigger("LeftPunch");
+                    ChargingParticlesL.enableEmission = true;
                     break;
                 case 1:
                     entityState = ENTITY_STATE.PUNCH_ANTICIPATION;
                     punchDir = DIRECTION.RIGHT;
                     anim.SetTrigger("RightPunch");
+                    ChargingParticlesR.enableEmission = true;
                     break;
             }
             timerCharge = Time.time;

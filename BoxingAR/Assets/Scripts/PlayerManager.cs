@@ -16,7 +16,7 @@ public class PlayerManager : Entity
     protected override void Update()
     {
         base.Update();
-        Debug.Log(entityState.ToString());
+        //Debug.Log(entityState.ToString());
         //DEBUG
         if (Input.GetKeyDown(KeyCode.W))
         {
@@ -60,11 +60,12 @@ public class PlayerManager : Entity
 
     public void RequestRightPunchRelease()
     {
+        ChargingParticlesR.enableEmission = false;
         if (entityState == ENTITY_STATE.PUNCH_ANTICIPATION)
         {
             entityState = ENTITY_STATE.PUNCH_RELEASE;
             anim.SetTrigger("RightReleasePunch");
-            ChargingParticlesR.enableEmission = false;
+           
         }
         else
         {
@@ -74,11 +75,12 @@ public class PlayerManager : Entity
 
     public void RequestLeftPunchRelease()
     {
+        ChargingParticlesL.enableEmission = false;
         if (entityState == ENTITY_STATE.PUNCH_ANTICIPATION)
         {
             entityState = ENTITY_STATE.PUNCH_RELEASE;
             anim.SetTrigger("LeftReleasePunch");
-            ChargingParticlesL.enableEmission = false;
+           
         }
         else
         {
