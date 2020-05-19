@@ -4192,7 +4192,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1283421990}
+  - {fileID: 1991131157}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4625,34 +4625,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3166228053562550056}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &1283421990
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 'marker_scaledMaterial
-
-    38872'
-  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: f5fed9638c6949878e47b53887885095, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors:
-    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!4 &1294082247 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: ce567b932de269941907e1b1244fe26e,
@@ -4748,6 +4720,12 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1315719338 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7853534084693187694, guid: d02539daee733b84e9aa638776ce2205,
+    type: 3}
+  m_PrefabInstance: {fileID: 2295910802774929459}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1347281399
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4842,6 +4820,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f250641ea8672cb4eb5a27597525db36, type: 3}
+--- !u!21 &1427013326
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 'MTIyNDQ5MDI2MTAzNjY3OTkz_scaledMaterial
+
+    58216'
+  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 58edbeb3219b43e7ab330bff29c1eeac, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors:
+    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!4 &1437052356 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4239800066613214, guid: 869b43ac4ebf0284c96352a161fdf9b5,
@@ -5101,7 +5107,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2129437597}
+  - {fileID: 1427013326}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5506,9 +5512,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4643f5987cec11f4f8106d0bb0003cb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  win_player: 2
+  rounds: 2
   rounds_enemy: {fileID: 481380824}
   rounds_player: {fileID: 69685716}
-  robots: {fileID: 203884326}
+  Player: {fileID: 1315719338}
+  Enemy: {fileID: 406475447}
+  robots: {fileID: 0}
 --- !u!4 &1657619628 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: f250641ea8672cb4eb5a27597525db36,
@@ -6167,6 +6177,34 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 318853624}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &1991131157
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 'marker_scaledMaterial
+
+    58134'
+  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: f5fed9638c6949878e47b53887885095, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors:
+    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!1001 &1992099649
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6731,34 +6769,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3166228053204814492}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &2129437597
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 'MTIyNDQ5MDI2MTAzNjY3OTkz_scaledMaterial
-
-    38950'
-  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 58edbeb3219b43e7ab330bff29c1eeac, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors:
-    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!1001 &2295910802774929459
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6986,6 +6996,11 @@ PrefabInstance:
       propertyPath: rightPunchFill
       value: 
       objectReference: {fileID: 456239201}
+    - target: {fileID: 3294237596407605411, guid: d02539daee733b84e9aa638776ce2205,
+        type: 3}
+      propertyPath: leftPunchFill
+      value: 
+      objectReference: {fileID: 1826724190}
     - target: {fileID: 3339153962115872810, guid: d02539daee733b84e9aa638776ce2205,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7020,6 +7035,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.93051565
+      objectReference: {fileID: 0}
+    - target: {fileID: 3468155361375877876, guid: d02539daee733b84e9aa638776ce2205,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3489551034295093036, guid: d02539daee733b84e9aa638776ce2205,
         type: 3}
@@ -8433,7 +8453,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 2295910802774929459}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1315719338}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 02a96346992580a4fb40aff267f0bd4f, type: 3}
