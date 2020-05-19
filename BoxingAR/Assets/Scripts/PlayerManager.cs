@@ -76,7 +76,7 @@ public class PlayerManager : Entity
         if (entityState == ENTITY_STATE.IDLE || lastFrames)
         {
             anim.SetTrigger("LeftPunch");
-            anim.SetTrigger("LeftReleasePunch");
+            anim.ResetTrigger("LeftReleasePunch");
         }
         else
         {
