@@ -1153,7 +1153,10 @@ MonoBehaviour:
   HitSound: {fileID: 0}
   hitByLastAttack: 0
   difficult: 1
-  randomTime: {x: 5, y: 10}
+  randomTimeToAttack: {x: 5, y: 10}
+  randomTimeChargeEasy: {x: 0.5, y: 0.5}
+  randomTimeChargeMedium: {x: 0.5, y: 0.5}
+  randomTimeChargeHard: {x: 0.5, y: 3}
 --- !u!1 &409752499
 GameObject:
   m_ObjectHideFlags: 0

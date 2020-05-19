@@ -19,7 +19,13 @@ public class EnemyManager : Entity
     float timeBtwAttacks = 0f;
     float timeCharging = 0f;
     public Vector2 randomTimeToAttack = new Vector2(5f, 10f);
-    public Vector2 randomTimeCharge = new Vector2(0.5f, 3f);
+
+    [Header("EASY")]
+    public Vector2 randomTimeChargeEasy = new Vector2(0.5f, 3f);
+    [Header("MEDIUM")]
+    public Vector2 randomTimeChargeMedium = new Vector2(0.5f, 3f);
+    [Header("HARD")]
+    public Vector2 randomTimeChargeHard = new Vector2(0.5f, 3f);
 
     protected override void Start()
     {
@@ -110,7 +116,7 @@ public class EnemyManager : Entity
                     break;
             }
             timerCharge = Time.time;
-            timeCharging = Random.Range(randomTimeCharge.x, randomTimeCharge.y);
+            timeCharging = Random.Range(randomTimeChargeEasy.x, randomTimeChargeEasy.y);
         }
     }
 
@@ -132,7 +138,7 @@ public class EnemyManager : Entity
                     break;
             }
             timerCharge = Time.time;
-            timeCharging = Random.Range(randomTimeCharge.x, randomTimeCharge.y);
+            timeCharging = Random.Range(randomTimeChargeMedium.x, randomTimeChargeMedium.y);
         }
         else
         {
@@ -190,7 +196,7 @@ public class EnemyManager : Entity
                     break;
             }
             timerCharge = Time.time;
-            timeCharging = Random.Range(randomTimeCharge.x, randomTimeCharge.y);
+            timeCharging = Random.Range(randomTimeChargeHard.x, randomTimeChargeHard.y);
         }
     }
 
