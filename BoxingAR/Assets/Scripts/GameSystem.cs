@@ -49,7 +49,7 @@ public class GameSystem : MonoBehaviour
    
             player_anim.SetBool("Victory",true);
             enemy_anim.SetBool("Defeat", true);
-            winText.active = true;
+            loseText.SetActive(true);
         }
         else
         {
@@ -71,7 +71,7 @@ public class GameSystem : MonoBehaviour
         {
             Debug.Log("Game over entered");
             //TODO: Show Game Over UI, etc.
-            loseText.active = true;
+            loseText.SetActive(true);
 
             player_anim.SetBool("Defeat", true);
             enemy_anim.SetBool("Victory", true);
