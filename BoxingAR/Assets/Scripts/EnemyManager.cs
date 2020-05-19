@@ -105,12 +105,14 @@ public class EnemyManager : Entity
                     entityState = ENTITY_STATE.PUNCH_ANTICIPATION;
                     punchDir = DIRECTION.LEFT;
                     anim.SetTrigger("LeftPunch");
+                    timerPunch = Time.time;
                     ChargingParticlesL.enableEmission = true;
                     break;
                 case 1:
                     entityState = ENTITY_STATE.PUNCH_ANTICIPATION;
                     punchDir = DIRECTION.RIGHT;
                     anim.SetTrigger("RightPunch");
+                    timerPunch = Time.time;
                     ChargingParticlesR.enableEmission = true;
                     break;
                 case 2:
@@ -144,6 +146,7 @@ public class EnemyManager : Entity
                     punchDir = DIRECTION.LEFT;
                     anim.SetTrigger("LeftPunch");
                     ChargingParticlesL.enableEmission = true;
+                    timerPunch = Time.time;
                     Debug.Log("entered");
                     break;
                 case 1:
@@ -151,6 +154,7 @@ public class EnemyManager : Entity
                     punchDir = DIRECTION.RIGHT;
                     anim.SetTrigger("RightPunch");
                     ChargingParticlesR.enableEmission = true;
+                    timerPunch = Time.time;
                     Debug.Log("entered");
                     break;
             }
@@ -213,12 +217,14 @@ public class EnemyManager : Entity
                     punchDir = DIRECTION.LEFT;
                     anim.SetTrigger("LeftPunch");
                     ChargingParticlesL.enableEmission = true;
+                    timerPunch = Time.time;
                     break;
                 case 1:
                     entityState = ENTITY_STATE.PUNCH_ANTICIPATION;
                     punchDir = DIRECTION.RIGHT;
                     anim.SetTrigger("RightPunch");
                     ChargingParticlesR.enableEmission = true;
+                    timerPunch = Time.time;
                     break;
             }
             timerCharge = Time.time;
