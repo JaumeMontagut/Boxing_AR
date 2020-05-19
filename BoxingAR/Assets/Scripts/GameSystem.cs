@@ -4,12 +4,24 @@ using UnityEngine;
 
 public class GameSystem : MonoBehaviour
 {
-    int win_player = 0;
-    int rounds = 0;
+    public int win_player = 0;
+    public int rounds = 0;
 
     public GameObject rounds_enemy;
     public GameObject rounds_player;
+    public GameObject Player;
+    public GameObject Enemy;
+    
+    Animator player_anim;
+    Animator enemy_anim;
 
+
+    private void Start()
+    {
+        player_anim = Player.GetComponent<Animator>();
+        enemy_anim = Enemy.GetComponent<Animator>();
+
+    }
     //TODO: Make this a singleton
 
     public void GameWin()
@@ -20,6 +32,10 @@ public class GameSystem : MonoBehaviour
         if (win_player >= 3) //Win
         {
             //TODO: Show Game Win UI, etc.
+            Debug.Log("Game win entered");
+   
+            player_anim.SetBool("Victory",true);
+            enemy_anim.SetBool("Defeat", true);
         }
         else
         {
@@ -33,7 +49,12 @@ public class GameSystem : MonoBehaviour
         UpdateCounter();
         if (rounds - win_player >= 3) //Lose
         {
+            Debug.Log("Game over entered");
             //TODO: Show Game Over UI, etc.
+
+
+            player_anim.SetBool("Defeat", true);
+            enemy_anim.SetBool("Victory", true);
         }
         else
         {
@@ -53,6 +74,8 @@ public class GameSystem : MonoBehaviour
         {
             c.gameObject.SetActive(false);
         }
+        Debug.Log(rounds_enemy);
+        Debug.Log(rounds_enemy);
         rounds_enemy.transform.Find((rounds - win_player).ToString()).gameObject.SetActive(true);
     }
 }
