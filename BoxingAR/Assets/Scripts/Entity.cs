@@ -77,7 +77,8 @@ public class Entity : MonoBehaviour
             {
                 currLife -= damage;
                 lifeBar.value = currLife / maxLife;
-                anim.SetTrigger("LeftHit");//TODO: Set RightHit or LeftHit depending on the way the entity is positioned (it could be in the middle, ideling to the right or left)
+                //TODO: Set RightHit or LeftHit depending on the way the entity is positioned (it could be in the middle, ideling to the right or left)
+                anim.Play("RightHit");
                 hitByLastAttack = true;
                 if (HitSound)
                     HitSound.Play();
@@ -94,8 +95,8 @@ public class Entity : MonoBehaviour
             {
                 currLife -= damage;
                 lifeBar.value = currLife / maxLife;
-                anim.SetTrigger("RightHit");//TODO: Set RightHit or LeftHit depending on the way the entity is positioned (it could be in the middle, ideling to the right or left)
-                Debug.Log("right attack");
+                //TODO: Set RightHit or LeftHit depending on the way the entity is positioned (it could be in the middle, ideling to the right or left)
+                anim.Play("LeftHit");
                 hitByLastAttack = true;
                 if (HitSound)
                     HitSound.Play();
@@ -135,14 +136,22 @@ public class Entity : MonoBehaviour
         opponent.hitByLastAttack = false;
     }
 
-    public void DodgeEvent()
+    public void LeftDodgeEvent()
     {
         entityState = ENTITY_STATE.DODGE;
+        entityPos = DIRECTION.LEFT;
+    }
+
+    public void RightDodgeEvent()
+    {
+        entityState = ENTITY_STATE.DODGE;
+        entityPos = DIRECTION.RIGHT;
     }
 
     public void DodgeRecoveryEvent()
     {
         entityState = ENTITY_STATE.DODGE_RECOVERY;
+        entityPos = DIRECTION.MIDDLE;
     }
 
     public ENTITY_STATE GetEntityState()
