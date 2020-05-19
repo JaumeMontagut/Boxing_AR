@@ -9,8 +9,17 @@ public class GameSystem : MonoBehaviour
 
     public GameObject rounds_enemy;
     public GameObject rounds_player;
+    public GameObject robots;
 
     //TODO: Make this a singleton
+
+    public void StartGame()
+    {
+        foreach(Transform t in robots.transform)
+        {
+            t.gameObject.GetComponent<Entity>().start = true;
+        }
+    }
 
     public void GameWin()
     {
