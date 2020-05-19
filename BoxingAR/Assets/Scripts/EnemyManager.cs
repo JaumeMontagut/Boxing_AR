@@ -27,6 +27,7 @@ public class EnemyManager : Entity
     [Header("HARD")]
     public Vector2 randomTimeChargeHard = new Vector2(0.5f, 3f);
 
+    AudioSource dodgeSound;
     protected override void Start()
     {
         gameManager = FindObjectOfType<GameSystem>();
@@ -35,6 +36,7 @@ public class EnemyManager : Entity
         timerAttack = Time.time;
         timerCharge = Time.time;
         timeBtwAttacks = Random.Range(randomTimeToAttack.x, randomTimeToAttack.y);
+        dodgeSound = transform.Find("DodgeSound").GetComponent<AudioSource>();
     }
 
     protected override void Update()
@@ -112,11 +114,15 @@ public class EnemyManager : Entity
                     entityState = ENTITY_STATE.DODGE;
                     entityPos = DIRECTION.RIGHT;
                     anim.SetTrigger("RightDodge");
+                    dodgeSound.Play();
+                    dodgeSound.panStereo = 1;
                     break;
                 case 3:
                     entityState = ENTITY_STATE.DODGE;
                     entityPos = DIRECTION.LEFT;
                     anim.SetTrigger("LeftDodge");
+                    dodgeSound.Play();
+                    dodgeSound.panStereo = -1;
                     break;
             }
             timerCharge = Time.time;
@@ -159,10 +165,14 @@ public class EnemyManager : Entity
                     case DIRECTION.LEFT:
                         entityPos = DIRECTION.RIGHT;
                         anim.SetTrigger("RightDodge");
+                        dodgeSound.Play();
+                        dodgeSound.panStereo = 1;
                         break;
                     case DIRECTION.RIGHT:
                         entityPos = DIRECTION.LEFT;
                         anim.SetTrigger("LeftDodge");
+                        dodgeSound.Play();
+                        dodgeSound.panStereo = -1;
                         break;
                 }
             }
@@ -179,12 +189,15 @@ public class EnemyManager : Entity
                 case DIRECTION.RIGHT:
                     entityPos = DIRECTION.RIGHT;
                     anim.SetTrigger("RightDodge");
-                   
+                    dodgeSound.Play();
+                    dodgeSound.panStereo = 1;
                     break;
                 case DIRECTION.LEFT:
                     entityPos = DIRECTION.LEFT;
                     anim.SetTrigger("LeftDodge");
-                  
+                    dodgeSound.Play();
+                    dodgeSound.panStereo = -1;
+
                     break;
             }
         }
