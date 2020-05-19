@@ -20,12 +20,18 @@ public class GameSystem : MonoBehaviour
     public GameObject winText;
     public GameObject loseText;
 
+    GameObject playerwinLight;
+    GameObject enemywinLight;
+
+
+
 
     private void Start()
     {
         player_anim = Player.GetComponent<Animator>();
         enemy_anim = Enemy.GetComponent<Animator>();
-        
+        playerwinLight = Player.transform.Find("WinLight").gameObject;
+        enemywinLight = Enemy.transform.Find("WinLight").gameObject;
     }
     //TODO: Make this a singleton
 
@@ -49,7 +55,8 @@ public class GameSystem : MonoBehaviour
    
             player_anim.SetBool("Victory",true);
             enemy_anim.SetBool("Defeat", true);
-            loseText.SetActive(true);
+            winText.SetActive(true);
+            playerwinLight.SetActive(true);
         }
         else
         {
@@ -75,6 +82,7 @@ public class GameSystem : MonoBehaviour
 
             player_anim.SetBool("Defeat", true);
             enemy_anim.SetBool("Victory", true);
+            enemywinLight.SetActive(true);
         }
         else
         {
