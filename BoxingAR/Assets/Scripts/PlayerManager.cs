@@ -47,7 +47,7 @@ public class PlayerManager : Entity
         }
     }
 
-    public void LastFrames()
+    public override void LastFrames()
     {
         lastFrames = true;
     }
