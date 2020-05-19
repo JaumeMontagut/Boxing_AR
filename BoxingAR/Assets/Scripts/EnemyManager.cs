@@ -173,7 +173,7 @@ public class EnemyManager : Entity
 
     private void LogicHardAttack()
     {
-        if (opponent.GetEntityState() == ENTITY_STATE.PUNCH_ANTICIPATION)
+        if (opponent.GetEntityState() == ENTITY_STATE.PUNCH)
         {
             entityState = ENTITY_STATE.DODGE_ANTICIPATION;
             switch (opponent.GetPunchDirection())
