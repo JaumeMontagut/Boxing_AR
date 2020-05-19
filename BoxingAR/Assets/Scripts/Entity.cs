@@ -99,9 +99,15 @@ public class Entity : MonoBehaviour
     {
         currLife -= damage;
         lifeBar.value = currLife / maxLife;
+        anim.ResetTrigger("LeftPunch");
+        anim.ResetTrigger("RightPunch");
+        anim.ResetTrigger("LeftReleasePunch");
+        anim.ResetTrigger("RightReleasePunch");
+        anim.ResetTrigger("LeftDodge");
+        anim.ResetTrigger("RightDodge");
         //TODO: Set RightHit or LeftHit depending on the way the entity is positioned (it could be in the middle, ideling to the right or left)
         //If we do this we don't even need to pass the "trigger name"
-        anim.Play("HitL");
+        anim.Play(triggerName);
         hitByLastAttack = true;
         if (HitSound)
         {
