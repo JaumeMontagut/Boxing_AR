@@ -25,7 +25,7 @@ public class GameSystem : MonoBehaviour
     GameObject enemywinLight;
 
    public GameObject buttonsEndGame;
-
+   public GameObject Confety;
 
     private void Start()
     {
@@ -34,6 +34,7 @@ public class GameSystem : MonoBehaviour
         playerwinLight = Player.transform.Find("WinLight").gameObject;
         enemywinLight = Enemy.transform.Find("WinLight").gameObject;
         buttonsEndGame.SetActive(false);
+        Confety.SetActive(false);
     }
     //TODO: Make this a singleton
 
@@ -60,6 +61,7 @@ public class GameSystem : MonoBehaviour
             winText.SetActive(true);
             playerwinLight.SetActive(true);
             buttonsEndGame.SetActive(true);
+            Confety.SetActive(true);
         }
         else
         {
@@ -86,7 +88,7 @@ public class GameSystem : MonoBehaviour
             enemy_anim.SetBool("Victory", true);
             enemywinLight.SetActive(true);
             loseText.SetActive(true);
-
+            Confety.SetActive(true);
             buttonsEndGame.SetActive(true);
         }
         else
@@ -136,5 +138,6 @@ public class GameSystem : MonoBehaviour
         playerwinLight.SetActive(false);
         enemywinLight.SetActive(false);
         loseText.SetActive(false);
+        Confety.SetActive(false);
     }
 }
