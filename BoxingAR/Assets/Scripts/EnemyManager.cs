@@ -115,14 +115,14 @@ public class EnemyManager : Entity
                     entityPos = DIRECTION.RIGHT;
                     anim.SetTrigger("RightDodge");
                     dodgeSound.Play();
-                    dodgeSound.panStereo = 1;
+                    dodgeSound.panStereo = -1;
                     break;
                 case 3:
                     entityState = ENTITY_STATE.DODGE;
                     entityPos = DIRECTION.LEFT;
                     anim.SetTrigger("LeftDodge");
                     dodgeSound.Play();
-                    dodgeSound.panStereo = -1;
+                    dodgeSound.panStereo = 1;
                     break;
             }
             timerCharge = Time.time;
@@ -166,13 +166,13 @@ public class EnemyManager : Entity
                         entityPos = DIRECTION.RIGHT;
                         anim.SetTrigger("RightDodge");
                         dodgeSound.Play();
-                        dodgeSound.panStereo = 1;
+                        dodgeSound.panStereo = -1;
                         break;
                     case DIRECTION.RIGHT:
                         entityPos = DIRECTION.LEFT;
                         anim.SetTrigger("LeftDodge");
                         dodgeSound.Play();
-                        dodgeSound.panStereo = -1;
+                        dodgeSound.panStereo = 1;
                         break;
                 }
             }
@@ -190,13 +190,13 @@ public class EnemyManager : Entity
                     entityPos = DIRECTION.RIGHT;
                     anim.SetTrigger("RightDodge");
                     dodgeSound.Play();
-                    dodgeSound.panStereo = 1;
+                    dodgeSound.panStereo = -1;
                     break;
                 case DIRECTION.LEFT:
                     entityPos = DIRECTION.LEFT;
                     anim.SetTrigger("LeftDodge");
                     dodgeSound.Play();
-                    dodgeSound.panStereo = -1;
+                    dodgeSound.panStereo = 1;
 
                     break;
             }
