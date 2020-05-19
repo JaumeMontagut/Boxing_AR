@@ -12,7 +12,6 @@ public class Entity : MonoBehaviour
         PUNCH_RELEASE,
         PUNCH,
         PUNCH_RECOVERY,
-        DODGE_ANTICIPATION,
         DODGE,
         DODGE_RECOVERY,
     };
