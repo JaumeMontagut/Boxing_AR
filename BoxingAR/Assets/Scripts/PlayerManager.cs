@@ -11,9 +11,6 @@ public class PlayerManager : Entity
     public Image rightPunchFill;
     public Image leftPunchFill;
 
-    private float timerPunch = 0f;
-    public  float maxTimePunch = 1f;
-
     protected override void Start()
     {
         gameManager = FindObjectOfType<GameSystem>();
@@ -92,6 +89,7 @@ public class PlayerManager : Entity
         {
             entityState = ENTITY_STATE.PUNCH_RELEASE;
             anim.SetTrigger("RightReleasePunch");
+            opponent.multiplier = (Time.time - timerPunch) / maxTimePunch;
         }
         else
         {
@@ -108,6 +106,7 @@ public class PlayerManager : Entity
         {
             entityState = ENTITY_STATE.PUNCH_RELEASE;
             anim.SetTrigger("LeftReleasePunch");
+            opponent.multiplier = (Time.time - timerPunch) / maxTimePunch;
         }
         else
         {
