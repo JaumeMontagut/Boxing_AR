@@ -108,6 +108,7 @@ public class Entity : MonoBehaviour
         anim.ResetTrigger("RightReleasePunch");
         anim.ResetTrigger("LeftDodge");
         anim.ResetTrigger("RightDodge");
+        Hitted();
         //TODO: Set RightHit or LeftHit depending on the way the entity is positioned (it could be in the middle, ideling to the right or left)
         //If we do this we don't even need to pass the "trigger name"
         anim.Play(triggerName);
@@ -121,6 +122,8 @@ public class Entity : MonoBehaviour
             EntityDead();
         }
     }
+
+    protected virtual void Hitted() { }
 
     public bool IsDead()
     {

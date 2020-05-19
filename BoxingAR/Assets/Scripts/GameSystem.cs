@@ -35,6 +35,11 @@ public class GameSystem : MonoBehaviour
             robots.transform.Find("Enemy").GetComponent<EnemyManager>().difficult++;
             //Recover life
         }
+
+        foreach (Transform t in robots.transform)
+        {
+            t.gameObject.GetComponent<Entity>().ResetLife();
+        }
     }
 
     public void GameOver()
@@ -48,6 +53,11 @@ public class GameSystem : MonoBehaviour
         else
         {
             //Recover life
+        }
+
+        foreach (Transform t in robots.transform)
+        {
+            t.gameObject.GetComponent<Entity>().ResetLife();
         }
     }
 

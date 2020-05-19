@@ -229,7 +229,5 @@ public class EnemyManager : Entity
     public override void EntityDead()
     {
         gameManager.GameWin();
-        ResetLife();
-        opponent.ResetLife();
     }
 }
