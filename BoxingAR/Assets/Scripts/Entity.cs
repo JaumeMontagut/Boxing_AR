@@ -43,7 +43,7 @@ public class Entity : MonoBehaviour
 
     protected virtual void Start()
     {
-        anim = GetComponentInChildren<Animator>();
+        anim = GetComponent<Animator>();
         HitSound = gameObject.transform.Find("HitSound").GetComponent<AudioSource>();
     }
 
@@ -78,7 +78,7 @@ public class Entity : MonoBehaviour
                 currLife -= damage;
                 lifeBar.value = currLife / maxLife;
                 //TODO: Set RightHit or LeftHit depending on the way the entity is positioned (it could be in the middle, ideling to the right or left)
-                anim.Play("RightHit");
+                anim.Play("HitR");
                 hitByLastAttack = true;
                 if (HitSound)
                     HitSound.Play();
@@ -96,7 +96,7 @@ public class Entity : MonoBehaviour
                 currLife -= damage;
                 lifeBar.value = currLife / maxLife;
                 //TODO: Set RightHit or LeftHit depending on the way the entity is positioned (it could be in the middle, ideling to the right or left)
-                anim.Play("LeftHit");
+                anim.Play("HitL");
                 hitByLastAttack = true;
                 if (HitSound)
                     HitSound.Play();

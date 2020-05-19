@@ -16,7 +16,7 @@ public class PlayerManager : Entity
     protected override void Update()
     {
         base.Update();
-
+        Debug.Log(entityState.ToString());
         //DEBUG
         if (Input.GetKeyDown(KeyCode.W))
         {

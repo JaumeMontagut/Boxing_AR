@@ -9,7 +9,7 @@ public class EnemyManager : Entity
 
     public enum Difficult
     {
-        EASY, MEDIUM, HARD
+        PUNCH_BAG, EASY, MEDIUM, HARD
     }
 
     public Difficult difficult = Difficult.MEDIUM;
@@ -35,6 +35,9 @@ public class EnemyManager : Entity
         {
             switch (difficult)
             {
+                case Difficult.PUNCH_BAG:
+                    //Literally doesn't do anything
+                    break;
                 case Difficult.EASY:
                     LogicEasyAttack();
                     break;
