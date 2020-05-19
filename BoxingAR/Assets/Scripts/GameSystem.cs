@@ -17,7 +17,7 @@ public class GameSystem : MonoBehaviour
         rounds++;
         win_player++;
         UpdateCounter();
-        if (win_player >= 5) //Win
+        if (win_player >= 3) //Win
         {
             //TODO: Show Game Win UI, etc.
         }
@@ -31,7 +31,7 @@ public class GameSystem : MonoBehaviour
     {
         rounds++;
         UpdateCounter();
-        if (rounds - win_player >= 5) //Lose
+        if (rounds - win_player >= 3) //Lose
         {
             //TODO: Show Game Over UI, etc.
         }
