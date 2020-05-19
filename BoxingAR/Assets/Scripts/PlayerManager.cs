@@ -105,11 +105,11 @@ public class PlayerManager : Entity
 
     public void RequestRightPunchRelease()
     {
-        ChargingParticlesR.enableEmission = false;
-        chargingSound.Stop();
-        rightPunchFill.fillAmount = 0f;
         if (entityState == ENTITY_STATE.PUNCH_ANTICIPATION)
         {
+            ChargingParticlesR.enableEmission = false;
+            chargingSound.Stop();
+            rightPunchFill.fillAmount = 0f;
             entityState = ENTITY_STATE.PUNCH_RELEASE;
             anim.SetTrigger("RightReleasePunch");
         }
@@ -121,11 +121,11 @@ public class PlayerManager : Entity
 
     public void RequestLeftPunchRelease()
     {
-        ChargingParticlesL.enableEmission = false;
-        chargingSound.Stop();
-        leftPunchFill.fillAmount = 0f;
         if (entityState == ENTITY_STATE.PUNCH_ANTICIPATION)
         {
+            ChargingParticlesL.enableEmission = false;
+            chargingSound.Stop();
+            leftPunchFill.fillAmount = 0f;
             entityState = ENTITY_STATE.PUNCH_RELEASE;
             anim.SetTrigger("LeftReleasePunch");
         }
