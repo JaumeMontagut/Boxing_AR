@@ -165,6 +165,7 @@ public class PlayerManager : Entity
 
     protected override void Hitted()
     {
+        base.Hitted();
         chargingSound.Stop();
         leftPunchFill.fillAmount = 0f;
         rightPunchFill.fillAmount = 0f;
