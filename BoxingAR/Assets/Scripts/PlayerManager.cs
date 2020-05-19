@@ -76,7 +76,7 @@ public class PlayerManager : Entity
         if (entityState == ENTITY_STATE.IDLE || lastFrames)
         {
             anim.SetTrigger("LeftPunch");
-            anim.SetTrigger("LeftReleasePunch");
+            anim.ResetTrigger("LeftReleasePunch");
         }
         else
         {
@@ -165,6 +165,7 @@ public class PlayerManager : Entity
 
     protected override void Hitted()
     {
+        base.Hitted();
         chargingSound.Stop();
         leftPunchFill.fillAmount = 0f;
         rightPunchFill.fillAmount = 0f;
