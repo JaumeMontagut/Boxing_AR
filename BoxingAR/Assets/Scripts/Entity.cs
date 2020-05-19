@@ -34,14 +34,13 @@ public class Entity : MonoBehaviour
     public ParticleSystem ChargingParticlesR;
     public ParticleSystem ChargingParticlesL;
 
-    protected static float maxLife = 120;
+    protected static float maxLife = 120f;
     protected float currLife = maxLife;
 
-    [HideInInspector] public float multiplier = 1f;
     protected float timerPunch = 0f;
-    public float maxTimePunch = 1f;
+    public float multiplierPunch = 30f;
 
-    protected float punchDamage = 15;
+    protected float punchDamage = 15f;
     [HideInInspector] public bool hitByLastAttack = false;
     [HideInInspector] public bool start = false;
 
@@ -66,7 +65,7 @@ public class Entity : MonoBehaviour
                 case ENTITY_STATE.PUNCH:
                     {
                         //We check every every frame that's on the punch state (it's like a collider that stays every few frames)
-                        opponent.CheckHit(punchDir, punchDamage);
+                        opponent.CheckHit(punchDir, punchDamage + (Time.time - timerPunch) * multiplierPunch);
                     }
                     break;
                 default:
@@ -104,8 +103,7 @@ public class Entity : MonoBehaviour
 
     private void ReceiveHit(float damage, string triggerName)
     {
-        currLife -= damage * multiplier;
-        Debug.Log(damage * multiplier);
+        currLife -= damage;
         lifeBar.value = currLife / maxLife;
         anim.ResetTrigger("LeftPunch");
         anim.ResetTrigger("RightPunch");
@@ -114,8 +112,6 @@ public class Entity : MonoBehaviour
         anim.ResetTrigger("LeftDodge");
         anim.ResetTrigger("RightDodge");
         Hitted();
-        opponent.multiplier = 1f;
-        multiplier = 1f;
         //TODO: Set RightHit or LeftHit depending on the way the entity is positioned (it could be in the middle, ideling to the right or left)
         //If we do this we don't even need to pass the "trigger name"
         anim.Play(triggerName);
