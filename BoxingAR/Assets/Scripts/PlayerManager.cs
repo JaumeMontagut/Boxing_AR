@@ -24,18 +24,8 @@ public class PlayerManager : Entity
     {
         base.Update();
 
-        if(entityState == ENTITY_STATE.PUNCH_ANTICIPATION)
-        {
-            switch (punchDir)
-            {
-                case DIRECTION.LEFT:
-                    leftPunchFill.fillAmount = (Time.time - timerPunch);
-                    break;
-                case DIRECTION.RIGHT:
-                    rightPunchFill.fillAmount = (Time.time - timerPunch);
-                    break;
-            }
-        }
+        leftPunchFill.fillAmount = (Time.time - timerPunch);
+        rightPunchFill.fillAmount = (Time.time - timerPunch);
 
         //DEBUG
         if (Input.GetKeyDown(KeyCode.W))
@@ -64,6 +54,10 @@ public class PlayerManager : Entity
         {
             anim.SetTrigger("RightPunch");
             anim.ResetTrigger("RightReleasePunch");
+            ChargingParticlesR.enableEmission = true;
+            chargingSound.Play();
+            timerPunch = Time.time;//TODO: Remove this, if you press on the frames before you're going to have an advantage (but the visual should still be there to indicate you)
+            rightPunchFill.enabled = true;
         }
         else
         {
@@ -77,6 +71,10 @@ public class PlayerManager : Entity
         {
             anim.SetTrigger("LeftPunch");
             anim.ResetTrigger("LeftReleasePunch");
+            ChargingParticlesR.enableEmission = true;
+            chargingSound.Play();
+            timerPunch = Time.time;//TODO: Remove this, if you press on the frames before you're going to have an advantage (but the visual should still be there to indicate you)
+            leftPunchFill.enabled = true;
         }
         else
         {
@@ -89,28 +87,21 @@ public class PlayerManager : Entity
     {
         punchDir = DIRECTION.LEFT; 
         entityState = ENTITY_STATE.PUNCH_ANTICIPATION;
-        ChargingParticlesR.enableEmission = true;
-        chargingSound.Play();
-        timerPunch = Time.time;
     }
 
     public override void StartPunchRight()
     {
         punchDir = DIRECTION.RIGHT;
         entityState = ENTITY_STATE.PUNCH_ANTICIPATION;
-        ChargingParticlesR.enableEmission = true;
-        chargingSound.Play();
-        timerPunch = Time.time;
     }
 
     public void RequestRightPunchRelease()
     {
-        if (entityState == ENTITY_STATE.PUNCH_ANTICIPATION)
+        if (entityState == ENTITY_STATE.IDLE || entityState == ENTITY_STATE.PUNCH_ANTICIPATION || lastFrames)
         {
             ChargingParticlesR.enableEmission = false;
             chargingSound.Stop();
-            rightPunchFill.fillAmount = 0f;
-            entityState = ENTITY_STATE.PUNCH_RELEASE;
+            rightPunchFill.enabled = false;
             anim.SetTrigger("RightReleasePunch");
         }
         else
@@ -121,18 +112,27 @@ public class PlayerManager : Entity
 
     public void RequestLeftPunchRelease()
     {
-        if (entityState == ENTITY_STATE.PUNCH_ANTICIPATION)
+        if (entityState == ENTITY_STATE.IDLE || entityState == ENTITY_STATE.PUNCH_ANTICIPATION || lastFrames)
         {
             ChargingParticlesL.enableEmission = false;
             chargingSound.Stop();
-            leftPunchFill.fillAmount = 0f;
-            entityState = ENTITY_STATE.PUNCH_RELEASE;
+            leftPunchFill.enabled = false;
             anim.SetTrigger("LeftReleasePunch");
         }
         else
         {
             //TODO: Play error sound / tired
         }
+    }
+
+    public override void RightPunchReleaseEvent()
+    {
+        entityState = ENTITY_STATE.PUNCH_RELEASE;
+    }
+
+    public override void LeftPunchReleaseEvent()
+    {
+        entityState = ENTITY_STATE.PUNCH_RELEASE;
     }
 
     public void RequestRightDodge()

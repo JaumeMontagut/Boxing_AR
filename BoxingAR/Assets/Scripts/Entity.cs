@@ -186,4 +186,10 @@ public class Entity : MonoBehaviour
 
     public virtual void StartPunchLeft()
     { }
+
+    public virtual void RightPunchReleaseEvent()
+    {}
+
+    public virtual void LeftPunchReleaseEvent()
+    {}
 }

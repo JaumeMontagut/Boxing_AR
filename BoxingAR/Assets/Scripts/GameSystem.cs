@@ -7,25 +7,25 @@ public class GameSystem : MonoBehaviour
 {
     public int win_player = 0;
     public int rounds = 0;
-
+    
     public GameObject rounds_enemy;
     public GameObject rounds_player;
-
+    
     public GameObject Player;
     public GameObject Enemy;
     
     Animator player_anim;
     Animator enemy_anim;
-
+    
     public GameObject robots;
     public GameObject winText;
     public GameObject loseText;
-
+    
     GameObject playerwinLight;
     GameObject enemywinLight;
 
-   public GameObject buttonsEndGame;
-   public GameObject Confety;
+    public GameObject buttonsEndGame;
+    public GameObject Confety;
 
     private void Start()
     {
@@ -126,18 +126,19 @@ public class GameSystem : MonoBehaviour
 
     public void ResetGame()
     {
-        win_player = 0;
-        rounds = 0;
-        player_anim.SetBool("Victory", false);
-        player_anim.SetBool("Defeat", false);
-        enemy_anim.SetBool("Victory", false);
-        enemy_anim.SetBool("Defeat", false);
-        Enemy.GetComponent<EnemyManager>().difficult = EnemyManager.Difficult.EASY;
-        buttonsEndGame.SetActive(false);
-        winText.SetActive(false);
-        playerwinLight.SetActive(false);
-        enemywinLight.SetActive(false);
-        loseText.SetActive(false);
-        Confety.SetActive(false);
+        //win_player = 0;
+        //rounds = 0;
+        //player_anim.SetBool("Victory", false);
+        //player_anim.SetBool("Defeat", false);
+        //enemy_anim.SetBool("Victory", false);
+        //enemy_anim.SetBool("Defeat", false);
+        //Enemy.GetComponent<EnemyManager>().difficult = EnemyManager.Difficult.EASY;
+        //buttonsEndGame.SetActive(false);
+        //winText.SetActive(false);
+        //playerwinLight.SetActive(false);
+        //enemywinLight.SetActive(false);
+        //loseText.SetActive(false);
+        //Confety.SetActive(false);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
