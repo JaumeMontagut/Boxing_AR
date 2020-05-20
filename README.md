@@ -1,5 +1,6 @@
 # RoboBoxing
 Repository of a AR game. Control a boxing robot and achieve the RoboBoxing glory!
+Headphones recommended.
 
 ## Resources
 * [Target 1](https://github.com/JaumeMontagut/Boxing_AR/blob/master/BoxingAR/Assets/Editor/Vuforia/ImageTargetTextures/data/leaves_5star_bg.jpg)

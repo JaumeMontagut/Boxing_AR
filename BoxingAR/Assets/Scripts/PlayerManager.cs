@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class PlayerManager : Entity
 {
     private GameSystem gameManager;
-    public AudioSource chargingSound;
+    private AudioSource chargingSound;
+    private AudioSource uiSound;
 
     public Image rightPunchFill;
     public Image leftPunchFill;
@@ -16,7 +17,8 @@ public class PlayerManager : Entity
     protected override void Start()
     {
         gameManager = FindObjectOfType<GameSystem>();
-        chargingSound = gameObject.transform.Find("ChargingSound").GetComponent<AudioSource>();
+        chargingSound = transform.Find("ChargingSound").GetComponent<AudioSource>();
+        uiSound = transform.Find("UISound").GetComponent<AudioSource>();
         base.Start();
     }
 
@@ -55,6 +57,7 @@ public class PlayerManager : Entity
             anim.SetTrigger("RightPunch");
             anim.ResetTrigger("RightReleasePunch");
             ChargingParticlesR.enableEmission = true;
+            uiSound.Play();
             chargingSound.Play();
             timerPunch = Time.time;//TODO: Remove this, if you press on the frames before you're going to have an advantage (but the visual should still be there to indicate you)
             rightPunchFill.enabled = true;
@@ -72,6 +75,7 @@ public class PlayerManager : Entity
             anim.SetTrigger("LeftPunch");
             anim.ResetTrigger("LeftReleasePunch");
             ChargingParticlesR.enableEmission = true;
+            uiSound.Play();
             chargingSound.Play();
             timerPunch = Time.time;//TODO: Remove this, if you press on the frames before you're going to have an advantage (but the visual should still be there to indicate you)
             leftPunchFill.enabled = true;
@@ -100,6 +104,7 @@ public class PlayerManager : Entity
         if (entityState == ENTITY_STATE.IDLE || entityState == ENTITY_STATE.PUNCH_ANTICIPATION || lastFrames)
         {
             ChargingParticlesR.enableEmission = false;
+            uiSound.Play();
             chargingSound.Stop();
             rightPunchFill.enabled = false;
             anim.SetTrigger("RightReleasePunch");
@@ -115,6 +120,7 @@ public class PlayerManager : Entity
         if (entityState == ENTITY_STATE.IDLE || entityState == ENTITY_STATE.PUNCH_ANTICIPATION || lastFrames)
         {
             ChargingParticlesL.enableEmission = false;
+            uiSound.Play();
             chargingSound.Stop();
             leftPunchFill.enabled = false;
             anim.SetTrigger("LeftReleasePunch");
@@ -141,6 +147,7 @@ public class PlayerManager : Entity
         {
             entityState = ENTITY_STATE.DODGE;
             entityPos = DIRECTION.RIGHT;
+            uiSound.Play();
             anim.SetTrigger("RightDodge");
         }
         else
@@ -155,6 +162,7 @@ public class PlayerManager : Entity
         {
             entityState = ENTITY_STATE.DODGE;
             entityPos = DIRECTION.LEFT;
+            uiSound.Play();
             anim.SetTrigger("LeftDodge");
         }
         else
