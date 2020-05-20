@@ -10,7 +10,7 @@ Headphones recommended.
 * [Powerpoint](https://docs.google.com/presentation/d/1Yg4vpxNnQBafs5Tj1pU5JZUxhQSGx8vDwymMPGa1iDY/edit?usp=sharing)
 
 ## Video
-* [Demo](https://www.youtube.com/watch?v=aT1zMHIoKYM)
+* [Demo](https://www.youtube.com/watch?v=D1uMyBW8OeY&feature=youtu.be&ab_channel=Noctrick)
 
 ## Github
 * [Repository](https://github.com/JaumeMontagut/Boxing_AR)
